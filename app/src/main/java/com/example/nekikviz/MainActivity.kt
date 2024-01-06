@@ -19,7 +19,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(R.color.lightblue)
                 ){}
-                screenzapitanja()
+                pitanja()
+                odgovori()
             }
         }
     }
