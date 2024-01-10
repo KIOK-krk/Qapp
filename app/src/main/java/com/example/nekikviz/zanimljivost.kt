@@ -1,5 +1,6 @@
 package com.example.nekikviz
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,24 +27,29 @@ fun zanimljivost() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(16.dp),
+            contentAlignment = Alignment.Center
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
             Card(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .wrapContentSize()
+                    .padding(16.dp)
             ) {
-                Text(
-                    modifier = Modifier
-                        .padding(28.dp),
-                    text = "Procesor (engl. central processing unit − CPU, hrv.središnja jedinica za obradbu," +
-                            " glavni je dio računala koji vođen zadanim programskim naredbama izvodi osnovne" +
-                            " radnje nad podacima.",
-                    fontSize = 22.sp,
-                    color = Color.White,
-                    fontFamily = FontFamily.Monospace
+                Column ( modifier = Modifier
+                        .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+                ){
+                    Text(
+                        text = "Procesor (engl. central processing unit − CPU, hrv.središnja jedinica za obradbu," +
+                                " glavni je dio računala koji vođen zadanim programskim naredbama izvodi osnovne" +
+                                " radnje nad podacima.",
+                        fontSize = 22.sp,
+                        color = Color.White,
+                        fontFamily = FontFamily.Monospace
 
-                )
+                    )
+                }
             }
         }
     }
