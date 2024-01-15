@@ -10,21 +10,17 @@ import androidx.compose.ui.res.colorResource
 import com.example.nekikviz.ui.theme.NekikvizTheme
 
 class MainActivity : ComponentActivity() {
+    private lateinit var ttsCitacEkrana: CitacEkrana
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ttsCitacEkrana = CitacEkrana(this)
         setContent {
             NekikvizTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(R.color.lightblue)
                 ) {
-                    //pitanjaIodgovori()
-                }
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = colorResource(R.color.lightblue)
-                ) {
-                    zanimljivost()
+                    pitanjaIodgovori(ttsCitacEkrana)
                 }
             }
         }
