@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(R.color.lightblue)
                 ) {
-                    pitanjaIodgovori(ttsCitacEkrana)
+                    rezultati(ttsCitacEkrana)
                 }
             }
         }

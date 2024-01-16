@@ -32,8 +32,11 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
-    var obrubButton by remember { mutableStateOf(Color.White)}
     var kvacica1 by remember { mutableStateOf(false) }
+    val ColorGreen = colorResource(R.color.green)
+    val lightBlueColor = colorResource(R.color.lightblue)
+    var obrubButton by remember { mutableStateOf(lightBlueColor) }
+
 
     LaunchedEffect(Unit) {
         ttsCitacEkrana.citaj(
@@ -66,8 +69,6 @@ fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
             )
         }
         Column {
-
-
             FilledTonalButton(
                 modifier = Modifier
                     .padding(start = 35.dp, end = 10.dp, top = 10.dp, bottom = 10.dp)
@@ -75,7 +76,7 @@ fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
                     .border(4.dp, obrubButton, shape = RoundedCornerShape(24.dp)),
                 colors = ButtonDefaults.buttonColors(colorResource(R.color.blue)),
                 onClick = {
-                    obrubButton = Color.Green
+                    obrubButton = ColorGreen
                     kvacica1 = true
                 }
 
@@ -130,7 +131,7 @@ fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
             Icon(
                 imageVector = Icons.Filled.Done,
                 contentDescription = "",
-                tint = Color.Red,
+                tint = ColorGreen,
                 modifier = Modifier
                     .requiredSize(42.dp)
                     .align(Alignment.CenterVertically)
