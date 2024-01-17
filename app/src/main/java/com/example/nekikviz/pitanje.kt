@@ -2,19 +2,14 @@ package com.example.nekikviz
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,20 +17,26 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.rememberLottieComposition
 
 @Composable
-fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
-    var kvacica1 by remember { mutableStateOf(false) }
-    val ColorGreen = colorResource(R.color.green)
+fun pitanjaIodgovori(prolazakEkranima: NavHostController, ttsCitacEkrana: CitacEkrana) {
+    val colorGreen = colorResource(R.color.green)
     val lightBlueColor = colorResource(R.color.lightblue)
     var obrubButton by remember { mutableStateOf(lightBlueColor) }
+    var obrubButton2 by remember { mutableStateOf(lightBlueColor) }
+    var obrubButton3 by remember { mutableStateOf(lightBlueColor) }
 
 
     LaunchedEffect(Unit) {
@@ -76,8 +77,8 @@ fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
                     .border(4.dp, obrubButton, shape = RoundedCornerShape(24.dp)),
                 colors = ButtonDefaults.buttonColors(colorResource(R.color.blue)),
                 onClick = {
-                    obrubButton = ColorGreen
-                    kvacica1 = true
+                    obrubButton = colorGreen
+                    prolazakEkranima.navigate("zanimljivost")
                 }
 
             ) {
@@ -91,11 +92,10 @@ fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
                 modifier = Modifier
                     .padding(start = 35.dp, end = 10.dp, top = 10.dp, bottom = 10.dp)
                     .defaultMinSize(minHeight = 64.dp, minWidth = 280.dp)
-                    .border(4.dp, obrubButton, shape = RoundedCornerShape(24.dp)),
+                    .border(4.dp, obrubButton2, shape = RoundedCornerShape(24.dp)),
                 colors = ButtonDefaults.buttonColors(colorResource(R.color.blue)),
                 onClick = {
-                    obrubButton = Color.Green
-                    kvacica1 = true
+                    obrubButton2 = Color.Red
                 }
 
             ) {
@@ -109,11 +109,11 @@ fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
                 modifier = Modifier
                     .padding(start = 35.dp, end = 10.dp, top = 10.dp, bottom = 10.dp)
                     .defaultMinSize(minHeight = 64.dp, minWidth = 280.dp)
-                    .border(4.dp, obrubButton, shape = RoundedCornerShape(24.dp)),
+                    .border(4.dp, obrubButton3, shape = RoundedCornerShape(24.dp)),
                 colors = ButtonDefaults.buttonColors(colorResource(R.color.blue)),
                 onClick = {
-                    obrubButton = Color.Green
-                    kvacica1 = true
+                    obrubButton3 = Color.Red
+
                 }
 
             ) {
@@ -124,21 +124,21 @@ fun pitanjaIodgovori(ttsCitacEkrana: CitacEkrana) {
                 )
             }
         }
-    }
-
-    Row {
-        if (kvacica1 == true) {
-            Icon(
-                imageVector = Icons.Filled.Done,
-                contentDescription = "",
-                tint = ColorGreen,
-                modifier = Modifier
-                    .requiredSize(42.dp)
-                    .align(Alignment.CenterVertically)
-            )
-        }
+        AnimacijaUpitnik()
     }
 }
+
+@Composable
+fun AnimacijaUpitnik() {
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.animacijaupitnik))
+    LottieAnimation(
+        composition = composition,
+        iterations = LottieConstants.IterateForever,
+        contentScale = ContentScale.FillWidth,
+    )
+}
+
+
 
 
 
