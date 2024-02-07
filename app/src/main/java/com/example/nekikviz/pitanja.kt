@@ -62,7 +62,7 @@ fun EkranPitanja() {
             VrijemeProgressBar(vrijeme = 0.75f)
             TekstPitanja()
             GumbZaOdgovor("MBO (matična ploča)", R.drawable.tocno, 2)
-            GumbZaOdgovor("OS(operacijski sustav)", R.drawable.tocno, 0)
+            GumbZaOdgovor("OS (operacijski sustav)", R.drawable.tocno, 0)
             GumbZaOdgovor("CPU (procesor)", R.drawable.krivo, 1)
         }
         IkonaZaDalje(R.drawable.strelicadalje, Modifier.align(Alignment.BottomEnd))
