@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "127378680849",
+    "firebase_url": "https://kviztest-4f514-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "kviztest-4f514",
+    "storage_bucket": "kviztest-4f514.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127378680849:android:fde692dc1c13fd6dfdd5b0",
+        "android_client_info": {
+          "package_name": "com.example.nekikviz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNQK_0Fix84oRNt5OxCgn8E24eToVS468"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127378680849:android:dc51c6b1747f447dfdd5b0",
+        "android_client_info": {
+          "package_name": "com.example.qgen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNQK_0Fix84oRNt5OxCgn8E24eToVS468"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
