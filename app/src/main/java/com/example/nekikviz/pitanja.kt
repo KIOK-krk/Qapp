@@ -23,6 +23,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -34,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 
 @Composable
@@ -79,7 +81,9 @@ fun NaslovEkrana() {
             painter = painterResource(id = R.drawable.povratak),
             contentDescription = "Left Icon",
             contentScale = ContentScale.Fit,
-            modifier = Modifier.size(32.dp)
+            modifier = Modifier
+                .size(32.dp)
+                .padding()
         )
         Spacer(modifier = Modifier.weight(1f))
         Text(
@@ -87,7 +91,9 @@ fun NaslovEkrana() {
             color = Color.White,
             fontSize = 22.sp,
             fontWeight = FontWeight.ExtraBold,
-            modifier = Modifier.align(Alignment.CenterVertically)
+            modifier = Modifier
+                .align(Alignment.CenterVertically)
+                .padding(end = 40.dp)
         )
         Spacer(modifier = Modifier.weight(1f)) // Dodaje se još jedan Spacer da zadrži simetričnost
     }

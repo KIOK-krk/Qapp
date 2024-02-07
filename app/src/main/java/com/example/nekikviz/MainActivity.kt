@@ -8,6 +8,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.nekikviz.ui.theme.NekikvizTheme
 import androidx.navigation.compose.composable
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(R.color.lightblue)
                 ) {
-                    glavniEkran()
+                    EkranPitanja()
                 }
             }
         }
