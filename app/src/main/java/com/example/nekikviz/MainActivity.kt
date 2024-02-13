@@ -25,23 +25,23 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(R.color.lightblue)
                 ) {
-                    EkranPitanja()
+                    Zanimljivost()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Pocetak(ttsCitacEkrana: CitacEkrana) {
+//@Composable
+//fun Pocetak(ttsCitacEkrana: CitacEkrana) {
 
-    val navigiranjeEkrana = rememberNavController()
+ //   val navigiranjeEkrana = rememberNavController()
 
-    NavHost(navController = navigiranjeEkrana, startDestination = "pitanjaIodgovori") {
-        composable("pitanjaIodgovori") { pitanjaIodgovori(navigiranjeEkrana, ttsCitacEkrana) }
-        composable("zanimljivost") { zanimljivost(navigiranjeEkrana, ttsCitacEkrana) }
-        composable("rezultati") { rezultati(ttsCitacEkrana) }
-    }
-}
+ //   NavHost(navController = navigiranjeEkrana, startDestination = "pitanjaIodgovori") {
+ //       composable("pitanjaIodgovori") { pitanjaIodgovori(navigiranjeEkrana, ttsCitacEkrana) }
+   //     composable("zanimljivost") { zanimljivost(navigiranjeEkrana, ttsCitacEkrana) }
+     //   composable("rezultati") { rezultati(ttsCitacEkrana) }
+//    }
+//}
 
 

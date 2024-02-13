@@ -95,7 +95,7 @@ fun NaslovEkrana() {
                 .align(Alignment.CenterVertically)
                 .padding(end = 40.dp)
         )
-        Spacer(modifier = Modifier.weight(1f)) // Dodaje se još jedan Spacer da zadrži simetričnost
+        Spacer(modifier = Modifier.weight(1f))
     }
 }
 
@@ -144,7 +144,7 @@ fun TekstPitanja() {
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .size(100.dp)
-                .offset(y = -50.dp) // Pomiče sliku prema gore za polovicu njene visine
+                .offset(y = -50.dp)
         )
     }
 }
@@ -152,9 +152,7 @@ fun TekstPitanja() {
 
 @Composable
 fun GumbZaOdgovor(text: String, iconRes: Int, stisnutGumb: Int) {
-    // stisnutGumb = 0 -> nije odgovoreno
-    // stisnutGumb = 1 -> točno
-    // stisnutGumb = 2 -> krivo
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
