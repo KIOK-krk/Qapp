@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -22,6 +23,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
 
 @Composable
 fun Zanimljivost() {
@@ -45,42 +47,52 @@ fun Zanimljivost() {
         ) {
             Text(
                 modifier = Modifier
-                    .padding(top = 35.dp),
+                    .padding(top = 42.dp),
                 text = "Jeste li znali?",
                 color = Color.White,
-                fontSize = 20.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
-        }
 
-        Image(
-            painter = painterResource(id = R.drawable.usklicnik),
-            contentDescription = "Uskličnik",
-            modifier = Modifier
-                .size(90.dp)
-                .padding(top = 60.dp)
-        )
 
-        Card(
-            modifier = Modifier
-                .padding(top = 300.dp),
-            colors = CardDefaults.cardColors(Color.White),
-
-            ) {
-
-            Text(
-                text = "Procesor (engl. central processing unit − CPU) " +
-                        "glavni je dio računala koji vođen zadanim programskim" +
-                        " naredbama izvodi osnovne radnje nad podacima.",
-                color = Color(0xff280a82),
-                fontSize = 28.sp,
-                fontFamily = FontFamily.Monospace,
-                fontWeight = FontWeight.Bold
+            Image(
+                painter = painterResource(id = R.drawable.usklicnik),
+                contentDescription = "Uskličnik",
+                modifier = Modifier
+                    .size(140.dp)
+                    .padding(top = 60.dp)
             )
-        }
+            Image(
+                painter = painterResource(id = R.drawable.gumbzadalje),
+                contentDescription = "Gumb za dalje",
+                modifier = Modifier
+                    .size(140.dp)
+                    .padding(top = 20.dp)
 
+            )
+
+            Card(
+                modifier = Modifier
+                    .padding(top = 2.dp, start = 20.dp, end = 20.dp)
+                    .size(width = 320.dp, height = 400.dp),
+
+                shape = RoundedCornerShape(20.dp),
+                colors = CardDefaults.cardColors(Color.White),
+
+                ) {
+
+                Text(
+                    text = "Procesor (engl. central processing unit − CPU) " +
+                            "glavni je dio računala koji vođen zadanim programskim" +
+                            " naredbama izvodi osnovne radnje nad podacima.",
+                    color = Color(0xff280a82),
+                    fontSize = 28.sp,
+                    fontFamily = FontFamily.Monospace,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
     }
-
 }
 
 
