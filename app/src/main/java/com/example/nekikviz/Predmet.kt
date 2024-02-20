@@ -1,8 +1,8 @@
-package com.example.nekikviz
+package com.example.qgen
 
-data class Predmet (
-    val idPredmet: String = "",
-    val nazivPredmeta: String =
-        ""
-
+data class Predmet(
+    var idPredmeta: String = "",
+    val nazivPredmeta: String = "",
+    val prosireno: Boolean = false,
+    val razred: List<String> = emptyList<String>()
 )
