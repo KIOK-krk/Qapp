@@ -2,7 +2,6 @@ package com.example.qgen
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -122,7 +121,7 @@ fun PredmetiEkran(
                         placeholder = {
                             Text(
                                 text = razred,
-                                color = Color.White,
+                                color = Color(0xFF634FDC),
                                 fontSize = 48.sp,
                                 fontWeight = FontWeight.Bold,
                             )
@@ -144,8 +143,9 @@ fun PredmetiEkran(
                                     contentAlignment = Alignment.Center,
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text(text = "1",
-                                        color = Color.White,
+                                    Text(
+                                        text = "1",
+                                        color = Color(0xFF7FA3FF),
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -166,7 +166,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "2",
-                                        color = Color.White,
+                                        color = Color(0xFF7FA3FF),
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -185,7 +185,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "3",
-                                        color = Color.White,
+                                        color = Color(0xFF7FA3FF),
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -204,7 +204,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "4",
-                                        color = Color.White,
+                                        color = Color(0xFF7FA3FF),
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -223,7 +223,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "5",
-                                        color = Color.White,
+                                        color = Color(0xFF7FA3FF),
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -242,7 +242,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "6",
-                                        color = Color.White,
+                                        color = Color(0xFF7FA3FF),
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -261,7 +261,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "7",
-                                        color = Color.White,
+                                        color = Color(0xFF7FA3FF),
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -280,7 +280,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "8",
-                                        color = Color.White,
+                                        color = Color(0xFF7FA3FF),
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
