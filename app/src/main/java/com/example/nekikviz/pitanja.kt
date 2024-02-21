@@ -1,5 +1,8 @@
 package com.example.nekikviz
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.TweenSpec
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -24,6 +27,8 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -36,10 +41,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import kotlinx.coroutines.delay
 
 
 @Composable
-fun EkranPitanja() {
+fun EkranPitanja(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkrana) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -61,7 +67,7 @@ fun EkranPitanja() {
             NaslovEkrana()
             VrijemeProgressBar(vrijeme = 0.75f)
             TekstPitanja()
-            GumbZaOdgovor("MBO (matična ploča)",R.drawable.tocno,2)
+            GumbZaOdgovor("MBO (matična ploča)", R.drawable.tocno, 2)
             GumbZaOdgovor("OS (operacijski sustav)", R.drawable.tocno, 0)
             GumbZaOdgovor("CPU (procesor)", R.drawable.krivo, 1)
         }
@@ -102,8 +108,35 @@ fun NaslovEkrana() {
 
 @Composable
 fun VrijemeProgressBar(vrijeme: Float) {
+    val ukupnoVrijeme = 5000L
+    val trenutnoVrijeme = remember { mutableStateOf(ukupnoVrijeme) }
+
+    val progress = animateFloatAsState(
+        targetValue = trenutnoVrijeme.value.toFloat() / ukupnoVrijeme,
+        animationSpec = TweenSpec(
+            durationMillis = ukupnoVrijeme.toInt(),
+            easing = LinearEasing
+        ),
+        finishedListener = {
+            //  kod sto kad istkne vrijeme
+        }
+    )
+
+    LaunchedEffect(key1 = true) {
+        val pocetnoVrijeme = System.currentTimeMillis()
+        while (trenutnoVrijeme.value > 0) {
+            val protekloVrijeme = System.currentTimeMillis() - pocetnoVrijeme
+            trenutnoVrijeme.value = ukupnoVrijeme - protekloVrijeme
+            if (trenutnoVrijeme.value <= 0) {
+                trenutnoVrijeme.value = 0
+            }
+        }
+        delay(1000L)
+    }
+
+
     LinearProgressIndicator(
-        progress = vrijeme,
+        progress = progress.value,
         trackColor = Color(0xFF7646FE),
         color = Color(0xFFFF9051),
         modifier = Modifier

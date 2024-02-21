@@ -31,7 +31,7 @@ import androidx.navigation.NavHostController
 
 
 @Composable
-fun glavniEkran() {
+fun glavniEkran(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkrana) {
 
     Box(
         modifier = Modifier
