@@ -1,5 +1,7 @@
 package com.example.qgen
 
+import com.example.nekikviz.Lekcija
+import com.example.nekikviz.Pitanje
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.channels.awaitClose

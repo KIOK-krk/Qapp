@@ -1,6 +1,6 @@
 package com.example.nekikviz
 
-data class PitanjeFirebase(
+data class Pitanje(
     val tekstPitanja: String = "",
     val odgovori: List<String> = emptyList(),
     val tocanOdgovor: Int = 0,
