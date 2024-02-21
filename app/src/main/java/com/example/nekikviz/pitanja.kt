@@ -61,7 +61,7 @@ fun EkranPitanja() {
             NaslovEkrana()
             VrijemeProgressBar(vrijeme = 0.75f)
             TekstPitanja()
-            GumbZaOdgovor("MBO (matična ploča)", R.drawable.tocno, 2)
+            GumbZaOdgovor("MBO (matična ploča)",R.drawable.tocno,2)
             GumbZaOdgovor("OS (operacijski sustav)", R.drawable.tocno, 0)
             GumbZaOdgovor("CPU (procesor)", R.drawable.krivo, 1)
         }
@@ -163,18 +163,11 @@ fun GumbZaOdgovor(text: String, iconRes: Int, stisnutGumb: Int) {
                 if (stisnutGumb == 1) Color(0xbaff372a)
                 else if (stisnutGumb == 2) Color(0xff08c9c9)
                 else Color.Transparent,
-                // ovaj if gore mozemo napisati i ovako
-                // sa naredbom when:
-                //                 when (stisnutGumb) {
-                //                    1 -> Color(0xbaff372a)
-                //                    2 -> Color(0xff08c9c9)
-                //                    else -> Color.Transparent
-                //                },
                 RoundedCornerShape(12.dp)
             )
             .padding(horizontal = 16.dp, vertical = 20.dp)
             .clickable {
-                // ovdje radimo on Click kod
+
             }
     ) {
         if (stisnutGumb != 0) {
@@ -200,7 +193,7 @@ fun IkonaZaDalje(iconRes: Int, modifier: Modifier = Modifier) {
         painter = painterResource(id = iconRes),
         contentDescription = "Navigation Icon",
         modifier = modifier
-            .size(128.dp)
+            .size(150.dp)
             .padding(16.dp)
     )
 }

@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -54,45 +55,47 @@ fun Zanimljivost() {
                 fontWeight = FontWeight.Bold
             )
 
-
-            Image(
-                painter = painterResource(id = R.drawable.usklicnik),
-                contentDescription = "Uskličnik",
-                modifier = Modifier
-                    .size(140.dp)
-                    .padding(top = 60.dp)
-            )
-            Image(
-                painter = painterResource(id = R.drawable.gumbzadalje),
-                contentDescription = "Gumb za dalje",
-                modifier = Modifier
-                    .size(140.dp)
-                    .padding(top = 20.dp)
-
-            )
-
             Card(
-                modifier = Modifier
-                    .padding(top = 2.dp, start = 20.dp, end = 20.dp)
-                    .size(width = 320.dp, height = 400.dp),
+                colors = CardDefaults.cardColors(Color.Transparent)
+            ) {
+                Card(
+                    modifier = Modifier
+                        .padding(top = 2.dp, start = 20.dp, end = 20.dp)
+                        .size(width = 320.dp, height = 400.dp),
 
-                shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(Color.White),
+                    shape = RoundedCornerShape(20.dp),
+                    colors = CardDefaults.cardColors(Color.White),
 
-                ) {
+                    ) {
 
-                Text(
-                    text = "Procesor (engl. central processing unit − CPU) " +
-                            "glavni je dio računala koji vođen zadanim programskim" +
-                            " naredbama izvodi osnovne radnje nad podacima.",
-                    color = Color(0xff280a82),
-                    fontSize = 28.sp,
-                    fontFamily = FontFamily.Monospace,
-                    fontWeight = FontWeight.Bold
+                    Text(
+                        text = "Procesor (engl. central processing unit − CPU) " +
+                                "glavni je dio računala koji vođen zadanim programskim" +
+                                " naredbama izvodi osnovne radnje nad podacima.",
+                        color = Color(0xff280a82),
+                        fontSize = 28.sp,
+                        fontFamily = FontFamily.Monospace,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                Image(
+                    painter = painterResource(id = R.drawable.usklicnik),
+                    contentDescription = "Uskličnik",
+                    modifier = Modifier
+                        .size(140.dp)
+                        .padding(bottom = 90.dp)
+                )
+
+                Image(
+                    painter = painterResource(id = R.drawable.gumbzadalje),
+                    contentDescription = "Gumb za dalje",
+                    modifier = Modifier
+                        .size(140.dp)
+                        .padding(bottom = 40.dp)
+
                 )
             }
         }
     }
 }
-
-

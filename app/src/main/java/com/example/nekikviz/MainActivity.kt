@@ -8,11 +8,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.nekikviz.ui.theme.NekikvizTheme
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.qgen.PredmetiEkran
 
 class MainActivity : ComponentActivity() {
     private lateinit var ttsCitacEkrana: CitacEkrana
@@ -25,25 +25,23 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(R.color.lightblue)
                 ) {
-                    Pocetak(ttsCitacEkrana)
+                    EkranRezultata()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Pocetak(ttsCitacEkrana: CitacEkrana) {
+//@Composable
+//fun Pocetak(ttsCitacEkrana: CitacEkrana) {
 
-    val navigiranjeEkrana = rememberNavController()
+ //   val navigiranjeEkrana = rememberNavController()
 
-    NavHost(navController = navigiranjeEkrana, startDestination = "glavni ekran") {
-        composable("pitanjaIodgovori") { pitanjaIodgovori(navigiranjeEkrana, ttsCitacEkrana) }
-        composable("zanimljivost") { Zanimljivost() }
-        composable("rezultati") { rezultati(ttsCitacEkrana) }
-        composable("PredmetiEkran") { PredmetiEkran(navigiranjeEkrana, prosireno = false) }
-        composable("glavni ekran") { glavniEkran(navigiranjeEkrana) }
-    }
-}
+ //   NavHost(navController = navigiranjeEkrana, startDestination = "pitanjaIodgovori") {
+ //       composable("pitanjaIodgovori") { pitanjaIodgovori(navigiranjeEkrana, ttsCitacEkrana) }
+   //     composable("zanimljivost") { zanimljivost(navigiranjeEkrana, ttsCitacEkrana) }
+     //   composable("rezultati") { rezultati(ttsCitacEkrana) }
+//    }
+//}
 
 

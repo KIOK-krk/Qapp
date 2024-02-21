@@ -17,6 +17,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -30,7 +31,7 @@ import androidx.navigation.NavHostController
 
 
 @Composable
-fun glavniEkran(navigiranjeEkrana: NavHostController) {
+fun glavniEkran() {
 
     Box(
         modifier = Modifier
@@ -50,7 +51,7 @@ fun glavniEkran(navigiranjeEkrana: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            //Spacer(modifier = Modifier.weight(1f))
+
             Image(
                 painter = painterResource(id = R.drawable.slikapocetak),
                 contentDescription = "Veliki Logo",
@@ -70,7 +71,6 @@ fun glavniEkran(navigiranjeEkrana: NavHostController) {
                     .fillMaxWidth()
                     .aspectRatio(ratio = 1f)
             )
-            //Spacer(modifier = Modifier.weight(1f))
         }
     }
     Column(
@@ -98,7 +98,7 @@ fun glavniEkran(navigiranjeEkrana: NavHostController) {
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
                 .defaultMinSize(minHeight = 64.dp, minWidth = 280.dp),
-            onClick = { navigiranjeEkrana.navigate("PredmetiEkran")},
+            onClick = { },
             colors = ButtonDefaults.buttonColors(colorResource(R.color.cyanblue)),
             border = BorderStroke(width = 1.dp, color = Color.White)
         )
