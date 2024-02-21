@@ -1,10 +1,9 @@
-package com.example.nekikviz
+package com.example.qgen
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.qgen.DataRepository
-import com.example.qgen.Predmet
+import com.example.nekikviz.Lekcija
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

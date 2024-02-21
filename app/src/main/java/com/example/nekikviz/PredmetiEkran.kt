@@ -1,10 +1,14 @@
-package com.example.nekikviz
+package com.example.qgen
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,11 +16,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -28,6 +36,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.text.TextStyle
@@ -37,15 +46,31 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.qgen.Predmet
+
+@Composable
+fun Pozadina() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF7FA3FF),
+                        Color(0xFF634FDC)
+                    )
+                )
+            )
+    )
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PredmetiEkran(
     navigiranjeEkrana: NavHostController,
-    viewModel: PredmetiViewModel = viewModel()
+    viewModel: PredmetiViewModel = viewModel(),
+    prosireno: Boolean
 ) {
-
+    Pozadina()
     viewModel.dohvatiSveLekcije()
     val predmeti = viewModel.sviPredmet.collectAsState().value
     var razredprosiren by remember { mutableStateOf(false) }
@@ -55,6 +80,8 @@ fun PredmetiEkran(
             Text(
                 text = "Predmeti",
                 fontSize = 25.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.White,
                 modifier = Modifier
                     .padding(all = 25.dp)
             )
@@ -64,6 +91,7 @@ fun PredmetiEkran(
             ){
                 Text(
                     text = "Razred:  ",
+                    color = Color.White,
                     fontSize = 12.sp,
                     modifier = Modifier
                         .padding(start = 12.dp, top = 4.dp)
@@ -81,8 +109,8 @@ fun PredmetiEkran(
                         ),
                         value = razred,
                         textStyle = TextStyle(
-                            color = Color(0xff280a82),
                             fontSize = 28.sp,
+                            color = Color.White,
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.End
                         ),
@@ -94,8 +122,9 @@ fun PredmetiEkran(
                         placeholder = {
                             Text(
                                 text = razred,
+                                color = Color.White,
                                 fontSize = 48.sp,
-                                fontWeight = FontWeight.Bold
+                                fontWeight = FontWeight.Bold,
                             )
                         },
                         modifier = Modifier
@@ -116,6 +145,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "1",
+                                        color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -136,6 +166,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "2",
+                                        color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -154,6 +185,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "3",
+                                        color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -172,6 +204,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "4",
+                                        color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -190,6 +223,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "5",
+                                        color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -208,6 +242,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "6",
+                                        color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -226,6 +261,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "7",
+                                        color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -244,6 +280,7 @@ fun PredmetiEkran(
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
                                     Text(text = "8",
+                                        color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold
                                     )
@@ -262,7 +299,7 @@ fun PredmetiEkran(
 
         LazyColumn() {
             items(predmeti) { predmet ->
-                PredmetKartica(predmet, navigiranjeEkrana, razred, viewModel)
+                PredmetKartica(predmet, navigiranjeEkrana, razred, prosireno, viewModel)
             }
         }
     }
@@ -270,32 +307,57 @@ fun PredmetiEkran(
 
 
 @Composable
-fun PredmetKartica(predmet: Predmet, navigiranjeEkrana:NavHostController, razred : String, viewModel: PredmetiViewModel) {
+fun PredmetKartica(
+    predmet: Predmet,
+    navigiranjeEkrana: NavHostController,
+    razred: String,
+    prosireno: Boolean,
+    viewModel: PredmetiViewModel
+) {
     // Pretpostavimo da viewModel već prati prosireno stanje za svaki predmet
     val lekcije = viewModel.sveLekcije.collectAsState().value
         .filter { it.PredmetID == predmet.idPredmeta && it.Razred.contains(razred) }
-
-    Card(
-        shape = RoundedCornerShape(8.dp),
+    Row(
         modifier = Modifier
-            .padding(8.dp)
             .fillMaxWidth()
     ) {
-        Column(modifier = Modifier
-            .fillMaxWidth()
-            .clickable {
-                viewModel.togglePredmetProsiren(predmet.idPredmeta)
-            }) {
-            Text(
-                text = predmet.nazivPredmeta,
-                modifier = Modifier.padding(16.dp)
-            )
-            if (predmet.prosireno) {
-                lekcije.forEach { lekcija ->
-                    karticaLekcija(nazivLekcije = lekcija.Naziv, navigiranjeEkrana = navigiranjeEkrana,idLekcije = lekcija.idLekcije)
+        Card(
+            shape = RoundedCornerShape(8.dp),
+            border = BorderStroke(1.dp, Color.White),
+            colors = CardDefaults.cardColors(
+                containerColor = Color(0xFF7375d9)
+            ),
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth()
+        ) {
+            Column(modifier = Modifier
+                .fillMaxWidth()
+                .clickable {
+                    viewModel.togglePredmetProsiren(predmet.idPredmeta)
+                }) {
+                Text(
+                    text = predmet.nazivPredmeta,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(16.dp)
+                )
+                if (predmet.prosireno) {
+                    lekcije.forEach { lekcija ->
+                        karticaLekcija(
+                            nazivLekcije = lekcija.Naziv,
+                            navigiranjeEkrana = navigiranjeEkrana,
+                            idLekcije = lekcija.idLekcije
+                        )
+                    }
                 }
             }
         }
+        Icon(
+            imageVector = Icons.Default.KeyboardArrowUp,
+            contentDescription = null
+        )
     }
 }
 
@@ -305,13 +367,24 @@ fun karticaLekcija(
     navigiranjeEkrana: NavHostController,
     idLekcije: String
 ) {
-    Text(
-        text = nazivLekcije,
+    Card(
+        shape = RoundedCornerShape(8.dp),
+        border = BorderStroke(1.dp, Color.White),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFF7FA3FF)
+        ),
         modifier = Modifier
-            .clickable {
-                navigiranjeEkrana.navigate("ListaPitanja/${nazivLekcije}/${idLekcije}")
-            }
-            .padding(start = 32.dp, top = 16.dp, bottom = 16.dp)
-            .fillMaxWidth()
-    )
+            .padding(bottom = 8.dp, start = 8.dp, end = 8.dp)
+    ) {
+        Text(
+            text = nazivLekcije,
+            color = Color.White,
+            modifier = Modifier
+//                .clickable {
+//                    navigiranjeEkrana.navigate("ListaPitanja/${nazivLekcije}/${idLekcije}")
+//                }
+                .padding(start = 32.dp, top = 16.dp, bottom = 16.dp)
+                .fillMaxWidth()
+        )
+    }
 }

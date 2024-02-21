@@ -17,7 +17,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -31,7 +30,7 @@ import androidx.navigation.NavHostController
 
 
 @Composable
-fun glavniEkran() {
+fun glavniEkran(navigiranjeEkrana: NavHostController) {
 
     Box(
         modifier = Modifier
@@ -99,7 +98,7 @@ fun glavniEkran() {
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
                 .defaultMinSize(minHeight = 64.dp, minWidth = 280.dp),
-            onClick = { },
+            onClick = { navigiranjeEkrana.navigate("PredmetiEkran")},
             colors = ButtonDefaults.buttonColors(colorResource(R.color.cyanblue)),
             border = BorderStroke(width = 1.dp, color = Color.White)
         )
