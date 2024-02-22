@@ -36,7 +36,7 @@ fun Pocetak(ttsCitacEkrana: CitacEkrana) {
 
     val navigiranjeEkrana = rememberNavController()
 
-    NavHost(navController = navigiranjeEkrana, startDestination = "EkranRezultata") {
+    NavHost(navController = navigiranjeEkrana, startDestination = "rezultati") {
         composable("ekranPitanja") { EkranPitanja(navigiranjeEkrana, ttsCitacEkrana) }
         composable("zanimljivost") { Zanimljivost(navigiranjeEkrana, ttsCitacEkrana) }
         composable("rezultati") { EkranRezultata(navigiranjeEkrana,ttsCitacEkrana) }
