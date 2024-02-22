@@ -71,7 +71,7 @@ fun EkranPitanja(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkra
             GumbZaOdgovor("OS (operacijski sustav)", R.drawable.tocno, 0)
             GumbZaOdgovor("CPU (procesor)", R.drawable.krivo, 1)
         }
-        IkonaZaDalje(R.drawable.strelicadalje, Modifier.align(Alignment.BottomEnd))
+        IkonaZaDalje(R.drawable.gumbzadalje, Modifier.align(Alignment.BottomEnd))
     }
 }
 
@@ -122,17 +122,19 @@ fun VrijemeProgressBar(vrijeme: Float) {
         }
     )
 
-    LaunchedEffect(key1 = true) {
+    LaunchedEffect(key1 = true){
         val pocetnoVrijeme = System.currentTimeMillis()
-        while (trenutnoVrijeme.value > 0) {
+        while(trenutnoVrijeme.value > 0){
             val protekloVrijeme = System.currentTimeMillis() - pocetnoVrijeme
             trenutnoVrijeme.value = ukupnoVrijeme - protekloVrijeme
-            if (trenutnoVrijeme.value <= 0) {
+            if(trenutnoVrijeme.value <= 0){
                 trenutnoVrijeme.value = 0
             }
+            delay(100L)
         }
-        delay(1000L)
+
     }
+
 
 
     LinearProgressIndicator(
