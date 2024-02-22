@@ -40,7 +40,7 @@ fun Pocetak(ttsCitacEkrana: CitacEkrana) {
         composable("ekranPitanja") { EkranPitanja(navigiranjeEkrana, ttsCitacEkrana) }
         composable("zanimljivost") { Zanimljivost(navigiranjeEkrana, ttsCitacEkrana) }
         composable("rezultati") { EkranRezultata(navigiranjeEkrana,ttsCitacEkrana) }
-        composable("glavniEkran") { glavniEkran(navigiranjeEkrana,ttsCitacEkrana) }
+        composable("glavniEkran") { GlavniEkran(navigiranjeEkrana,ttsCitacEkrana) }
     }
 }
 
