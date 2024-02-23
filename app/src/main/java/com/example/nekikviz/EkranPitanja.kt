@@ -23,61 +23,116 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.delay
 
 
 @Composable
-fun EkranPitanja(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkrana) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0xFF7FA3FF),
-                        Color(0xFF634FDC)
+fun EkranPitanja(
+    navigiranjeEkrana: NavHostController,
+    ttsCitacEkrana: CitacEkrana,
+    nacinRada: Int,
+    viewModel: EkranPitanjaViewModel = viewModel(),
+) {
+    // nacinRada:
+    // 0 - zabava
+    // 1 - skola
+    // 2 - uciteljski kodovi
+
+    val context = LocalContext.current
+    val ucitavanje by viewModel.ucitavanje.collectAsState()
+    val trenutnoPitanje: Int = 0
+
+    LaunchedEffect(Unit) {
+        when (nacinRada) {
+            0 -> viewModel.ucitajPitanjaZabava(context)
+            //1 -> viewModel.ucitajPitanjaSkola(context)
+            //2 -> viewModel.ucitajPitanjaUcitelj(context)
+        }
+    }
+
+    val pitanja: List<Pitanje> = viewModel.svaPitanja.collectAsState().value
+
+    if (ucitavanje == true) {
+        CircularProgressIndicator()
+    } else {
+        LaunchedEffect(Unit) {
+            ttsCitacEkrana.citaj(
+                pitanja[1825].tekstPitanja + "? " +
+                        "odgovor pod brojem jedan " + pitanja[0].odgovori[0] + " " +
+                        "odgovor pod brojem dva " + pitanja[0].odgovori[1] + " " +
+                        "odgovor pod brojem tri  " + pitanja[0].odgovori[2]
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFF7FA3FF),
+                            Color(0xFF634FDC)
+                        )
                     )
                 )
-            )
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            NaslovEkrana()
-            VrijemeProgressBar(vrijeme = 0.75f)
-            TekstPitanja()
-            GumbZaOdgovor("MBO (matična ploča)", R.drawable.tocno, 2)
-            GumbZaOdgovor("OS (operacijski sustav)", R.drawable.tocno, 0)
-            GumbZaOdgovor("CPU (procesor)", R.drawable.krivo, 1)
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                NaslovEkrana((trenutnoPitanje + 1).toString())
+                VrijemeProgressBar(vrijeme = 0.75f)
+                TekstPitanja(pitanja[trenutnoPitanje].tekstPitanja)
+                GumbZaOdgovor(
+                    pitanja[trenutnoPitanje].odgovori[0],
+                    pitanja[trenutnoPitanje].tocanOdgovor,
+                    1
+                )
+                GumbZaOdgovor(
+                    pitanja[trenutnoPitanje].odgovori[1],
+                    pitanja[trenutnoPitanje].tocanOdgovor,
+                    2
+                )
+                GumbZaOdgovor(
+                    pitanja[trenutnoPitanje].odgovori[2],
+                    pitanja[trenutnoPitanje].tocanOdgovor,
+                    3
+                )
+            }
+            IkonaZaDalje(R.drawable.gumbzadalje, Modifier.align(Alignment.BottomEnd))
         }
-        IkonaZaDalje(R.drawable.gumbzadalje, Modifier.align(Alignment.BottomEnd))
     }
 }
 
 
 @Composable
-fun NaslovEkrana() {
+fun NaslovEkrana(brojPitanja: String) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start,
@@ -93,7 +148,7 @@ fun NaslovEkrana() {
         )
         Spacer(modifier = Modifier.weight(1f))
         Text(
-            text = "1. Pitanje",
+            text = brojPitanja + ". Pitanje",
             color = Color.White,
             fontSize = 22.sp,
             fontWeight = FontWeight.ExtraBold,
@@ -150,14 +205,14 @@ fun VrijemeProgressBar(vrijeme: Float) {
 
 
 @Composable
-fun TekstPitanja() {
+fun TekstPitanja(pitanjeTekst: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp, top = 64.dp, bottom = 16.dp)
     ) {
         BasicTextField(
-            value = "Koji je najbitniji dio kompjutera?",
+            value = pitanjeTekst,
             onValueChange = {},
             enabled = false,
             textStyle = TextStyle(
@@ -186,7 +241,10 @@ fun TekstPitanja() {
 
 
 @Composable
-fun GumbZaOdgovor(text: String, iconRes: Int, stisnutGumb: Int) {
+fun GumbZaOdgovor(text: String, tocan: Int, poredak: Int) {
+    var bojaGumba by remember { mutableStateOf(Color.Transparent) }
+    var stisnutGumb by remember { mutableStateOf(false) }
+    var iconRes by remember { mutableStateOf(0) }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -195,17 +253,22 @@ fun GumbZaOdgovor(text: String, iconRes: Int, stisnutGumb: Int) {
             .padding(horizontal = 16.dp)
             .border(1.dp, Color.White, RoundedCornerShape(12.dp))
             .background(
-                if (stisnutGumb == 1) Color(0xbaff372a)
-                else if (stisnutGumb == 2) Color(0xff08c9c9)
-                else Color.Transparent,
+                bojaGumba,
                 RoundedCornerShape(12.dp)
             )
             .padding(horizontal = 16.dp, vertical = 20.dp)
             .clickable {
-
+                if (tocan == poredak) {
+                    bojaGumba = Color(0xff08c9c9)
+                    iconRes = R.drawable.tocno
+                } else {
+                    bojaGumba = Color(0xbaff372a)
+                    iconRes = R.drawable.krivo
+                }
+                stisnutGumb = true
             }
     ) {
-        if (stisnutGumb != 0) {
+        if (stisnutGumb == true) {
             Image(
                 painter = painterResource(id = iconRes),
                 contentDescription = "Answer Icon",

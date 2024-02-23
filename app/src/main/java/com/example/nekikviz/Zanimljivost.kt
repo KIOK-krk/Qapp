@@ -39,7 +39,6 @@ fun Zanimljivost(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkra
                     " naredbama izvodi osnovne radnje nad podacima."
         )
     }
-
     Box(
         modifier = Modifier
             .fillMaxSize()

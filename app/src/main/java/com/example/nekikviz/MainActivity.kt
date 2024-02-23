@@ -31,18 +31,18 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @Composable
 fun Pocetak(ttsCitacEkrana: CitacEkrana) {
 
     val navigiranjeEkrana = rememberNavController()
 
-    NavHost(navController = navigiranjeEkrana, startDestination = "rezultati") {
-        composable("ekranPitanja") { EkranPitanja(navigiranjeEkrana, ttsCitacEkrana) }
+    NavHost(navController = navigiranjeEkrana, startDestination = "ekranPitanja") {
+        composable("ekranPitanja") { EkranPitanja(navigiranjeEkrana, ttsCitacEkrana,0) }
         composable("zanimljivost") { Zanimljivost(navigiranjeEkrana, ttsCitacEkrana) }
         composable("rezultati") { EkranRezultata(navigiranjeEkrana,ttsCitacEkrana) }
         composable("glavniEkran") { GlavniEkran(navigiranjeEkrana,ttsCitacEkrana) }
+        composable("ekranKodova") { EkranKodova(navigiranjeEkrana) }
     }
 }
-
-
 

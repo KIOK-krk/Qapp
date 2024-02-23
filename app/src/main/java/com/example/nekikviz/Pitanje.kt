@@ -1,5 +1,8 @@
 package com.example.nekikviz
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Pitanje(
     val tekstPitanja: String = "",
     val odgovori: List<String> = emptyList(),
