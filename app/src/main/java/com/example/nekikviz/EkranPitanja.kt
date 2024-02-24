@@ -81,7 +81,7 @@ fun EkranPitanja(
     } else {
         LaunchedEffect(Unit) {
             ttsCitacEkrana.citaj(
-                pitanja[1825].tekstPitanja + "? " +
+                pitanja[0].tekstPitanja + "? " +
                         "odgovor pod brojem jedan " + pitanja[0].odgovori[0] + " " +
                         "odgovor pod brojem dva " + pitanja[0].odgovori[1] + " " +
                         "odgovor pod brojem tri  " + pitanja[0].odgovori[2]
@@ -99,6 +99,7 @@ fun EkranPitanja(
                         )
                     )
                 )
+                .padding(top = 28.dp)
         ) {
             Column(
                 modifier = Modifier
@@ -106,7 +107,7 @@ fun EkranPitanja(
                     .padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                NaslovEkrana((trenutnoPitanje + 1).toString())
+                NaslovEkrana((trenutnoPitanje + 1).toString(),navigiranjeEkrana)
                 VrijemeProgressBar(vrijeme = 0.75f)
                 TekstPitanja(pitanja[trenutnoPitanje].tekstPitanja)
                 GumbZaOdgovor(
@@ -125,18 +126,18 @@ fun EkranPitanja(
                     3
                 )
             }
-            IkonaZaDalje(R.drawable.gumbzadalje, Modifier.align(Alignment.BottomEnd))
+            IkonaZaDalje(R.drawable.gumbzadalje, Modifier.align(Alignment.BottomEnd),navigiranjeEkrana)
         }
     }
 }
 
 
 @Composable
-fun NaslovEkrana(brojPitanja: String) {
+fun NaslovEkrana(brojPitanja: String,navigiranjeEkrana:NavHostController) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start,
-        modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+        modifier = Modifier.padding(bottom = 8.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.povratak),
@@ -145,6 +146,9 @@ fun NaslovEkrana(brojPitanja: String) {
             modifier = Modifier
                 .size(32.dp)
                 .padding()
+                .clickable{
+                    navigiranjeEkrana.navigate("glavniEkran")
+                }
         )
         Spacer(modifier = Modifier.weight(1f))
         Text(
@@ -286,12 +290,15 @@ fun GumbZaOdgovor(text: String, tocan: Int, poredak: Int) {
 
 
 @Composable
-fun IkonaZaDalje(iconRes: Int, modifier: Modifier = Modifier) {
+fun IkonaZaDalje(iconRes: Int, modifier: Modifier = Modifier,navigiranjeEkrana: NavHostController) {
     Image(
         painter = painterResource(id = iconRes),
         contentDescription = "Navigation Icon",
         modifier = modifier
             .size(150.dp)
             .padding(16.dp)
+            .clickable{
+                navigiranjeEkrana.navigate("zanimljivost")
+            }
     )
 }

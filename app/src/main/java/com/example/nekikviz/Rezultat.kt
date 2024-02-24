@@ -39,7 +39,7 @@ fun EkranRezultata(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEk
                 )
             )
     ) {
-        LosRezultat()
+        DobarRezultat()
     }
 }
 

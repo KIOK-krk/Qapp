@@ -2,6 +2,7 @@ package com.example.nekikviz
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -53,7 +54,8 @@ fun Zanimljivost(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkra
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(top = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
@@ -107,6 +109,9 @@ fun Zanimljivost(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkra
                         .align(Alignment.Center)
                         .size(140.dp)
                         .offset(y = 300.dp)
+                        .clickable{
+                            navigiranjeEkrana.navigate("rezultati")
+                        }
                 )
             }
 

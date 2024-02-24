@@ -57,7 +57,7 @@ fun GlavniEkran(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkran
                 alignment = Alignment.TopCenter,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 20.dp, bottom = 5.dp)
+                    .padding(top = 30.dp)
                     .aspectRatio(ratio = 1f)
             )
 
@@ -66,14 +66,15 @@ fun GlavniEkran(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkran
                 contentDescription = "Naslov",
                 alignment = Alignment.TopCenter,
                 modifier = Modifier
-                    .padding(bottom = 100.dp)
+                    .padding(bottom = 140.dp)
                     .fillMaxWidth()
                     .aspectRatio(ratio = 1f)
             )
         }
     }
     Column(
-        modifier = Modifier,
+        modifier = Modifier
+            .padding(bottom = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Bottom
     ) {
@@ -81,7 +82,7 @@ fun GlavniEkran(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkran
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
                 .defaultMinSize(minHeight = 64.dp, minWidth = 280.dp),
-            onClick = { /*TODO*/ },
+            onClick = { navigiranjeEkrana.navigate("ekranPitanja") },
             colors = ButtonDefaults.buttonColors(colorResource(R.color.orange)),
             border = BorderStroke(width = 1.dp, color = Color.White)
         )
@@ -97,7 +98,7 @@ fun GlavniEkran(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkran
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
                 .defaultMinSize(minHeight = 64.dp, minWidth = 280.dp),
-            onClick = { },
+            onClick = { navigiranjeEkrana.navigate("predmetiEkran")},
             colors = ButtonDefaults.buttonColors(colorResource(R.color.cyanblue)),
             border = BorderStroke(width = 1.dp, color = Color.White)
         )
@@ -113,7 +114,7 @@ fun GlavniEkran(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkran
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 60.dp)
                 .defaultMinSize(minHeight = 64.dp, minWidth = 280.dp),
-            onClick = { /*TODO*/ },
+            onClick = {navigiranjeEkrana.navigate("ekranKodova")},
             border = BorderStroke(width = 1.dp, color = Color.White)
         )
         {

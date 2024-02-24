@@ -1,7 +1,7 @@
 [
   {
     "brojPitanja": 15000,
-    "tekstPitanja": "U kojoj državi satirički tjednik Okovani patak izlazi od 1915.",
+    "tekstPitanja": "U kojoj državi satirički tjednik Okovani patak izlazi od 1915.?",
     "odgovori": [
       "Engleskoj",
       "Njemačkoj",
@@ -11,7 +11,7 @@
   },
   {
     "brojPitanja": 15001,
-    "tekstPitanja": "Koje godišnje doba na sjevernoj polutci kalendarski počinje 4 dana nakon Dana Sv.Patrika",
+    "tekstPitanja": "Koje godišnje doba na sjevernoj polutci kalendarski počinje 4 dana nakon Dana Sv.Patrika?",
     "odgovori": [
       "Proljeće",
       "Jesen",
@@ -21,7 +21,7 @@
   },
   {
     "brojPitanja": 15002,
-    "tekstPitanja": "Pandorina kutija iz 1929 najuspjeliji je film kojeg austrijskog redatelja",
+    "tekstPitanja": "Pandorina kutija iz 1929. najuspjeliji je film kojeg austrijskog redatelja?",
     "odgovori": [
       "Michaela Hanekea",
       "Fritz Langa",
@@ -31,7 +31,7 @@
   },
   {
     "brojPitanja": 15003,
-    "tekstPitanja": "Koja je koalicija desnog centra s Menachemom Beginom na čelu pobijedila na izraelskim izborima 1977",
+    "tekstPitanja": "Koja je koalicija desnog centra s Menachemom Beginom na čelu pobijedila na izraelskim izborima 1977.?",
     "odgovori": [
       "Herut",
       "Zeleni pokret",
@@ -41,7 +41,7 @@
   },
   {
     "brojPitanja": 15004,
-    "tekstPitanja": "U kojem je noćnom klubu u Harlmeu Duke Ellington sa svojim orkestrom dirigirao do 1932",
+    "tekstPitanja": "U kojem je noćnom klubu u Harlmeu Duke Ellington sa svojim orkestrom dirigirao do 1932.?",
     "odgovori": [
       "Slatki klub",
       "Cotton club",
@@ -51,7 +51,7 @@
   },
   {
     "brojPitanja": 15005,
-    "tekstPitanja": "Koja je površinom najveća država u kojoj je ćirilica službeno pismo",
+    "tekstPitanja": "Koja je površinom najveća država u kojoj je ćirilica službeno pismo?",
     "odgovori": [
       "Rusija",
       "Kina",
@@ -61,7 +61,7 @@
   },
   {
     "brojPitanja": 15006,
-    "tekstPitanja": "Na kojoj se afričkoj rijeci odvija radnja Konradova Srca tame",
+    "tekstPitanja": "Na kojoj se afričkoj rijeci odvija radnja Konradova Srca tame?",
     "odgovori": [
       "Nil",
       "Kongo",
@@ -71,7 +71,7 @@
   },
   {
     "brojPitanja": 15007,
-    "tekstPitanja": "Koje ime dijele bivši talijanski predsjednik Pertini i slikar Botticelli",
+    "tekstPitanja": "Koje ime dijele bivši talijanski predsjednik Pertini i slikar Botticelli?",
     "odgovori": [
       "Lorenzo",
       "Sandro",
@@ -81,7 +81,7 @@
   },
   {
     "brojPitanja": 15008,
-    "tekstPitanja": "Koji je evanđelist po zanimanju bio liječnik,te je zaštitnik liječnika i kirurga",
+    "tekstPitanja": "Koji je evanđelist po zanimanju bio liječnik, te je zaštitnik liječnika i kirurga?",
     "odgovori": [
       "Luka",
       "Marko",
@@ -91,7 +91,7 @@
   },
   {
     "brojPitanja": 15009,
-    "tekstPitanja": "Koji ruski pjesnik u pjesmi Ne,ja nisam Byron kaže Ne,Byron nisam ja",
+    "tekstPitanja": "Koji ruski pjesnik u pjesmi Ne,ja nisam Byron kaže Ne,Byron nisam ja?",
     "odgovori": [
       "Aleksandar Sergejevič Puškin",
       "Lev Tolstoj",
@@ -101,7 +101,7 @@
   },
   {
     "brojPitanja": 15010,
-    "tekstPitanja": "Sociolog Ludwig Gumplowizc 1902 iznosi tezu da su Hrvati zapravo slavenizirani pripadnici kojeg germanskog naroda",
+    "tekstPitanja": "Sociolog Ludwig Gumplowizc 1902. iznosi tezu da su Hrvati zapravo slavenizirani pripadnici kojeg germanskog naroda?",
     "odgovori": [
       "Franka",
       "Gota",
@@ -111,7 +111,7 @@
   },
   {
     "brojPitanja": 15011,
-    "tekstPitanja": "Tko je kao zatvorenik pročitao Heideggerov Bitak i vrijeme pa napisao Bitak i ništa",
+    "tekstPitanja": "Tko je kao zatvorenik pročitao Heideggerov Bitak i vrijeme pa napisao Bitak i ništa?",
     "odgovori": [
       "Jean-Paul Sartre",
       "Friedrich Nietzsche",
@@ -121,7 +121,7 @@
   },
   {
     "brojPitanja": 15012,
-    "tekstPitanja": "1971 otvorena je 1.hrvatska autocesta na dionici koja povezuje Kikovicu i-koje mjesto",
+    "tekstPitanja": "1971. otvorena je 1. hrvatska autocesta na dionici koja povezuje Kikovicu i-koje mjesto?",
     "odgovori": [
       "Orehovicu",
       "Ludbreg",
@@ -131,7 +131,7 @@
   },
   {
     "brojPitanja": 15013,
-    "tekstPitanja": "Koji je borac protiv kolonizacije u svojoj domovini bio poznat kao Bapu,što znači otac",
+    "tekstPitanja": "Koji je borac protiv kolonizacije u svojoj domovini bio poznat kao Bapu, što znači otac?",
     "odgovori": [
       "Tagore",
       "Gandhi",
@@ -141,7 +141,7 @@
   },
   {
     "brojPitanja": 15014,
-    "tekstPitanja": "Koji se postotak bruto plaće u Republici Hrvatksoj izdvaja za 1.stup mirovinskog osiguranja",
+    "tekstPitanja": "Koji se postotak bruto plaće u Republici Hrvatksoj izdvaja za 1. stup mirovinskog osiguranja?",
     "odgovori": [
       "20%",
       "15%",
@@ -151,7 +151,7 @@
   },
   {
     "brojPitanja": 15015,
-    "tekstPitanja": "Tko se,u filmu Smiješna strana povijesti,pojavljuje 5 uloga,između ostalih kao Mojsije,TorQuemada i Luj XVI",
+    "tekstPitanja": "Tko se, u filmu Smiješna strana povijesti, pojavljuje 5 uloga, između ostalih kao Mojsije, TorQuemada i Luj XVI?",
     "odgovori": [
       "Mel Brooks",
       "Otto von Bismarck",
@@ -161,7 +161,7 @@
   },
   {
     "brojPitanja": 15016,
-    "tekstPitanja": "Tko je autor pjesama Oprosti mi,pape,TOnka i Ča je život vengo fantažija",
+    "tekstPitanja": "Tko je autor pjesama Oprosti mi,pape,Tonka i Ča je život vengo fantažija?",
     "odgovori": [
       "Oliver Dragojević",
       "Dražen Zečić",
@@ -171,7 +171,7 @@
   },
   {
     "brojPitanja": 15017,
-    "tekstPitanja": "Koliko je godina imao Neil Armstrong kad je hodao po Mjesecu",
+    "tekstPitanja": "Koliko je godina imao Neil Armstrong kad je hodao po Mjesecu?",
     "odgovori": [
       "38",
       "42",
@@ -181,7 +181,7 @@
   },
   {
     "brojPitanja": 15018,
-    "tekstPitanja": "Kojim slovom počinju imena troje od 4 članice grupe Divas",
+    "tekstPitanja": "Kojim slovom počinju imena troje od 4 članica grupe Divas?",
     "odgovori": [
       "M",
       "T",
@@ -191,7 +191,7 @@
   },
   {
     "brojPitanja": 15019,
-    "tekstPitanja": "Koje se posilno gorivo iskapalo u rudnicima Raša,Labin,Ripenda,Pićan i Tupljak",
+    "tekstPitanja": "Koje se posilno gorivo iskapalo u rudnicima Raša, Labin, Ripenda, Pićan i Tupljak?",
     "odgovori": [
       "Ugljen",
       "Zlato",
@@ -201,7 +201,7 @@
   },
   {
     "brojPitanja": 15020,
-    "tekstPitanja": "U finalu ženskog US-opena 2015 igrale su tenisačice iz koje države",
+    "tekstPitanja": "U finalu ženskog US-opena 2015. igrale su tenisačice iz koje države?",
     "odgovori": [
       "Francuske",
       "Italije",
@@ -211,7 +211,7 @@
   },
   {
     "brojPitanja": 15021,
-    "tekstPitanja": "Sveta Alijansa nastala je nakon konačnog Napoleonovog pada nakon konferencija u Aachenu,Opavi,Veroni i –kojem gradu bivše Jugoslavije",
+    "tekstPitanja": "Sveta Alijansa nastala je nakon konačnog Napoleonovog pada nakon konferencija u Aachenu, Opavi, Veroni i – kojem gradu bivše Jugoslavije?",
     "odgovori": [
       "Splitu",
       "Beogradu",
@@ -221,7 +221,7 @@
   },
   {
     "brojPitanja": 15022,
-    "tekstPitanja": "Uz koje baranjsko brdo leže Knezovi vinogradi",
+    "tekstPitanja": "Uz koje baranjsko brdo leže Knezovi vinogradi?",
     "odgovori": [
       "Plemićko brdo",
       "Kraljevsko brdo",
@@ -231,7 +231,7 @@
   },
   {
     "brojPitanja": 15023,
-    "tekstPitanja": "Planetoid Hrvatska nalazi se u glavnom planetoidnom pojasu pa se nalazi između koja dva planeta",
+    "tekstPitanja": "Planetoid Hrvatska nalazi se u glavnom planetoidnom pojasu pa se nalazi između koja dva planeta?",
     "odgovori": [
       "Zemlje i Merkura",
       "Marsa i Jupitera",
@@ -241,7 +241,7 @@
   },
   {
     "brojPitanja": 15024,
-    "tekstPitanja": "AQaba je jedina morska luka koje države",
+    "tekstPitanja": "AQaba je jedina morska luka koje države?",
     "odgovori": [
       "Irske",
       "Jordana",
@@ -251,7 +251,7 @@
   },
   {
     "brojPitanja": 15025,
-    "tekstPitanja": "Radnja prvog dijela koje se književne trilogije Alberta Fortisa odvija 1806,drugog 1832,a trećeg 1900",
+    "tekstPitanja": "Radnja prvog dijela koje se književne trilogije Alberta Fortisa odvija 1806., drugog 1832., a trećeg 1900.?",
     "odgovori": [
       "Vukovarska trilogija",
       "Gorski vijenac",
@@ -261,17 +261,17 @@
   },
   {
     "brojPitanja": 15026,
-    "tekstPitanja": "Kako glasi nadimak Hajdukovog trenera Damira Burića",
+    "tekstPitanja": "Koji trener je osvojio 1. HNL ligu s HNK Rijekom?",
     "odgovori": [
-      "Jugo",
-      "Šolta",
-      "Braco"
+      "Dragan Skočić",
+      "Matjaž Kek",
+      "Igor Bišćan"
     ],
     "tocanOdgovor": 2
   },
   {
     "brojPitanja": 15027,
-    "tekstPitanja": "Koja se mjerna jedinica SI sustava može nazvati i kilogram-metar u skeundi na kvadrat",
+    "tekstPitanja": "Koja se mjerna jedinica SI sustava može nazvati i kilogram-metar u sekundi na kvadrat?",
     "odgovori": [
       "Hektor",
       "Njutn",
@@ -281,7 +281,7 @@
   },
   {
     "brojPitanja": 15028,
-    "tekstPitanja": "Iako je poznata i kao azijska kruška,na koje voće oblikom ploda podsjeća japanski nashi",
+    "tekstPitanja": "Iako je poznata i kao azijska kruška, na koje voće oblikom ploda podsjeća japanski nashi?",
     "odgovori": [
       "Sljiva",
       "Jabuku",
@@ -291,7 +291,7 @@
   },
   {
     "brojPitanja": 15029,
-    "tekstPitanja": "Po kojem se televizijskom i kazališnom redatelju naziva najveći studio HRT-a",
+    "tekstPitanja": "Po kojem se televizijskom i kazališnom redatelju naziva najveći studio HRT-a?",
     "odgovori": [
       "Ivan Leo Lemo",
       "Antonu Martiju",
@@ -301,7 +301,7 @@
   },
   {
     "brojPitanja": 15030,
-    "tekstPitanja": "Kojoj drđavi pripada atlantski Prince Edward Island",
+    "tekstPitanja": "Kojoj državi pripada atlantski Prince Edward Island?",
     "odgovori": [
       "Australiji",
       "Kanadi",
@@ -311,7 +311,7 @@
   },
   {
     "brojPitanja": 15031,
-    "tekstPitanja": "Ime kojeg je novozavjetnog razbojnika opća imenica za grubijane i propalice",
+    "tekstPitanja": "Ime kojeg je novozavjetnog razbojnika opća imenica za grubijane i propalice?",
     "odgovori": [
       "Huligan",
       "Baraba",
@@ -321,7 +321,7 @@
   },
   {
     "brojPitanja": 15032,
-    "tekstPitanja": "Uz koji se grad veće glazbeno stvaralaštvo Berga,Weberna i Schonberga",
+    "tekstPitanja": "Uz koji se grad veće glazbeno stvaralaštvo Berga, Weberna i Schonberga?",
     "odgovori": [
       "Salzburg",
       "Beč",
@@ -331,7 +331,7 @@
   },
   {
     "brojPitanja": 15033,
-    "tekstPitanja": "S kojom su državom,za virjeme Sueske krize,ratovali Izrael,Francuska i Velika Britanija",
+    "tekstPitanja": "S kojom su državom, za virjeme Sueske krize, ratovali Izrael, Francuska i Velika Britanija?",
     "odgovori": [
       "Egiptom",
       "Francuska",
@@ -341,7 +341,7 @@
   },
   {
     "brojPitanja": 15034,
-    "tekstPitanja": "Koji je grad na našoj obali domaćin festivala elektroničke glazbe Outlook i Dimensions",
+    "tekstPitanja": "Koji je grad na našoj obali domaćin festivala elektroničke glazbe Outlook i Dimensions?",
     "odgovori": [
       "Pula",
       "Poreč",
@@ -351,7 +351,7 @@
   },
   {
     "brojPitanja": 15035,
-    "tekstPitanja": "Tko svoj poznati roman počinje rečenicom Lolita-svijetlo mog života,oganj mojih prepona",
+    "tekstPitanja": "Tko svoj poznati roman počinje rečenicom Lolita-svijetlo mog života, oganj mojih prepona?",
     "odgovori": [
       "Leo Tolstoj",
       "Vladimir Nabokov",
@@ -361,7 +361,7 @@
   },
   {
     "brojPitanja": 15036,
-    "tekstPitanja": "Kako se prezivalu Solomon i Peggy po kojima su prozvani muzeji suvremene umjetnosti u New Yorku i Veneciji",
+    "tekstPitanja": "Kako se prezivaju Solomon i Peggy po kojima su prozvani muzeji suvremene umjetnosti u New Yorku i Veneciji?",
     "odgovori": [
       "Guggenheim",
       "Baltich",
@@ -371,7 +371,7 @@
   },
   {
     "brojPitanja": 15037,
-    "tekstPitanja": "Koje se dvije rijeke spominju u pjesmi Ljubav se ne trži",
+    "tekstPitanja": "Koje se dvije rijeke spominju u pjesmi Ljubav se ne trži?",
     "odgovori": [
       "Mura i Drava",
       "Drina i Neretva",
@@ -381,7 +381,7 @@
   },
   {
     "brojPitanja": 15038,
-    "tekstPitanja": "Koje ime poglavar derviškog reda dijeli s napadom na kraljicu u šahu",
+    "tekstPitanja": "Koje ime poglavar derviškog reda dijeli s napadom na kraljicu u šahu?",
     "odgovori": [
       "Tvrđa",
       "Kraljevstvo",
@@ -391,7 +391,7 @@
   },
   {
     "brojPitanja": 15039,
-    "tekstPitanja": "Pod čijom je vlašću otok Lastovo bio od sredine 13.st. do početka 19.st.",
+    "tekstPitanja": "Pod čijom je vlašću otok Lastovo bio od sredine 13. st. do početka 19. st.?",
     "odgovori": [
       "Kraljevine Italije",
       "Mletačke republike",
@@ -401,7 +401,7 @@
   },
   {
     "brojPitanja": 15040,
-    "tekstPitanja": "Tko je,uz melankolika,flegmatika i kolerika,u Hipokratovoj podjeli na 4 temperamenta",
+    "tekstPitanja": "Tko je, uz melankolika, flegmatika i kolerika u Hipokratovoj podjeli na 4 temperamenta?",
     "odgovori": [
       "Apatik",
       "Sarkastik",
@@ -411,7 +411,7 @@
   },
   {
     "brojPitanja": 15041,
-    "tekstPitanja": "Koji je riječanin bio glavni sudac na 3 utakmice druge faze nogometne Lige prvaka 2015",
+    "tekstPitanja": "Koji je riječanin bio glavni sudac na 3 utakmice druge faze nogometne Lige prvaka 2015.?",
     "odgovori": [
       "Mateo Kovačić",
       "Marko Pjaca",
@@ -421,7 +421,7 @@
   },
   {
     "brojPitanja": 15042,
-    "tekstPitanja": "Grb koje države uokviruju 2 stupa s motom Plus ultra",
+    "tekstPitanja": "Grb koje države uokviruju 2 stupa s motom Plus ultra?",
     "odgovori": [
       "Francuske",
       "Španjolske",
@@ -431,7 +431,7 @@
   },
   {
     "brojPitanja": 15043,
-    "tekstPitanja": "Koja naša riječ za zemljoradnika ističe težinu tog posla",
+    "tekstPitanja": "Koja naša riječ za zemljoradnika ističe težinu tog posla?",
     "odgovori": [
       "Teški",
       "Naporan",
@@ -441,7 +441,7 @@
   },
   {
     "brojPitanja": 15044,
-    "tekstPitanja": "Koji je vodeći talijanski politički dnevnik 1876 osnovan kao Večernji list",
+    "tekstPitanja": "Koji je vodeći talijanski politički dnevnik 1876. osnovan kao Večernji list?",
     "odgovori": [
       "La Repubblica",
       "Gazzetta dello Sport",
@@ -451,7 +451,7 @@
   },
   {
     "brojPitanja": 15045,
-    "tekstPitanja": "Koji je troslovni grad u istočnoj Srbiji poznat po vleikim nalazištima bakra",
+    "tekstPitanja": "Koji je troslovni grad u istočnoj Srbiji poznat po velikim nalazištima bakra?",
     "odgovori": [
       "Zajecar",
       "Knjazevac",
@@ -461,7 +461,7 @@
   },
   {
     "brojPitanja": 15046,
-    "tekstPitanja": "Koja tajna služba nastoji likvidirati Kondora u političkom trileru 3 Kondorova dana",
+    "tekstPitanja": "Koja tajna služba nastoji likvidirati Kondora u političkom trileru 3 Kondorova dana?",
     "odgovori": [
       "KGB",
       "CIA",
@@ -471,7 +471,7 @@
   },
   {
     "brojPitanja": 15047,
-    "tekstPitanja": "Za čiju je reprezentaicju igrao Guiellmo Stabile,najbolji strijelac SP-a 1930",
+    "tekstPitanja": "Za čiju je reprezentaicju igrao Guiellmo Stabile, najbolji strijelac SP-a 1930.?",
     "odgovori": [
       "Brazil",
       "Argentinu",
@@ -481,7 +481,7 @@
   },
   {
     "brojPitanja": 15048,
-    "tekstPitanja": "Hadis je naziv za usmenom predajom sačuvane podatke o životu kojeg proroka",
+    "tekstPitanja": "Hadis je naziv za usmenom predajom sačuvane podatke o životu kojeg proroka?",
     "odgovori": [
       "Kur'an",
       "Sunce",
@@ -491,7 +491,7 @@
   },
   {
     "brojPitanja": 15049,
-    "tekstPitanja": "Koja rijeka nastaje spajanjem rijeka Maranon i Ucayalli",
+    "tekstPitanja": "Koja rijeka nastaje spajanjem rijeka Maranon i Ucayalli?",
     "odgovori": [
       "Amazona",
       "Niger",
@@ -501,7 +501,7 @@
   },
   {
     "brojPitanja": 15050,
-    "tekstPitanja": "Koja je poprečna greda na dnu broda glavni uzdužni element brodske konstrukcije",
+    "tekstPitanja": "Koja je poprečna greda na dnu broda glavni uzdužni element brodske konstrukcije?",
     "odgovori": [
       "Bulb",
       "Kobilica",
@@ -511,7 +511,7 @@
   },
   {
     "brojPitanja": 15051,
-    "tekstPitanja": "U kojoj je povijensoj noći ubijen francuski admiral Gaspard de Coligny",
+    "tekstPitanja": "U kojoj je povijensoj noći ubijen francuski admiral Gaspard de Coligny?",
     "odgovori": [
       "Majčinoj noći",
       "Bartolomejskoj noći",
@@ -521,7 +521,7 @@
   },
   {
     "brojPitanja": 15052,
-    "tekstPitanja": "Kako se,u crtiću Hugo,zove zla vještica koja je zarobila Hugolinu i njezinu djecu",
+    "tekstPitanja": "Kako se, u crtiću Hugo, zove zla vještica koja je zarobila Hugolinu i njezinu djecu?",
     "odgovori": [
       "Mordana",
       "Zločesta Mirta",
@@ -531,7 +531,7 @@
   },
   {
     "brojPitanja": 15053,
-    "tekstPitanja": "U kojem filmu Tarantino glumi papučara koji strepi od supruge Bonnie",
+    "tekstPitanja": "U kojem filmu Tarantino glumi papučara koji strepi od supruge Bonnie?",
     "odgovori": [
       "Prokletnici",
       "Pakleni šund",
@@ -541,7 +541,7 @@
   },
   {
     "brojPitanja": 15054,
-    "tekstPitanja": "Pitija bi prorokovala omamljena plinovima iz pukotine u zemlji ili bi žvakala lišće-koje biljke",
+    "tekstPitanja": "Pitija bi prorokovala omamljena plinovima iz pukotine u zemlji ili bi žvakala lišće-koje biljke?",
     "odgovori": [
       "Lovora",
       "Mandarina",
@@ -551,7 +551,7 @@
   },
   {
     "brojPitanja": 15055,
-    "tekstPitanja": "U delti koje se rijeke nalazi polumilijunski ruski grad Astrahan",
+    "tekstPitanja": "U delti koje se rijeke nalazi polumilijunski ruski grad Astrahan?",
     "odgovori": [
       "Volge",
       "Kaspijskom jezeru",
@@ -561,7 +561,7 @@
   },
   {
     "brojPitanja": 15056,
-    "tekstPitanja": "Koju je pjesmu Beatlesa Hladno pivo lascivno prepjevalo",
+    "tekstPitanja": "Koju je pjesmu Beatlesa Hladno pivo lascivno prepjevalo?",
     "odgovori": [
       "Help!",
       "Yesterday",
@@ -571,7 +571,7 @@
   },
   {
     "brojPitanja": 15057,
-    "tekstPitanja": "Koji je apostol hodao po vodi ususret Isusu,ali se uplašio jačine vjetra i počeo tonuti",
+    "tekstPitanja": "Koji je apostol hodao po vodi ususret Isusu, ali se uplašio jačine vjetra i počeo tonuti?",
     "odgovori": [
       "Petar",
       "Ivan Jakov",
@@ -581,7 +581,7 @@
   },
   {
     "brojPitanja": 15058,
-    "tekstPitanja": "U kojoj britanskoj alternativnoj privatnoj školi djeca sama odabiru sadržaje i brzinu učenja",
+    "tekstPitanja": "U kojoj britanskoj alternativnoj privatnoj školi djeca sama odabiru sadržaje i brzinu učenja?",
     "odgovori": [
       "Bedales",
       "Eton",
@@ -591,7 +591,7 @@
   },
   {
     "brojPitanja": 15059,
-    "tekstPitanja": "Koji je igrač i trener Vatrenih svojedobno bio najbolje plaćeni obrambeni igrač u Premiershipu",
+    "tekstPitanja": "Koji je igrač i trener Vatrenih svojedobno bio najbolje plaćeni obrambeni igrač u Premiershipu?",
     "odgovori": [
       "Eduardo da Silva",
       "Slaven Bilić",
@@ -601,7 +601,7 @@
   },
   {
     "brojPitanja": 15060,
-    "tekstPitanja": "Koja se pjevačica u pjesmi Holding out for a hero pita gdje su nestali svi dobri muškarci",
+    "tekstPitanja": "Koja se pjevačica u pjesmi Holding out for a hero pita gdje su nestali svi dobri muškarci?",
     "odgovori": [
       "Tina Turner",
       "Madonna",
@@ -611,7 +611,7 @@
   },
   {
     "brojPitanja": 15061,
-    "tekstPitanja": "Po kojem se osnivaču pokreta Nesvrstanih popularno zove ravna uska jakna na kopčanje s ruskom kragnom",
+    "tekstPitanja": "Po kojem se osnivaču pokreta Nesvrstanih popularno zove ravna uska jakna na kopčanje s ruskom kragnom?",
     "odgovori": [
       "Tito",
       "Gagarin",
@@ -621,7 +621,7 @@
   },
   {
     "brojPitanja": 15062,
-    "tekstPitanja": "Bloger CodyMcClain Brown je svoj humoristični vodič za preživljavanje u Hrvatskoj nazvao Propuh,papuče i-tko",
+    "tekstPitanja": "Bloger CodyMcClain Brown je svoj humoristični vodič za preživljavanje u Hrvatskoj nazvao Propuh, papuče i-tko?",
     "odgovori": [
       "more",
       "Dinja",
@@ -631,7 +631,7 @@
   },
   {
     "brojPitanja": 15063,
-    "tekstPitanja": "Na zastavi kojeg se prekomorksog teritorija nalazi crvena tvrđava na bijelom polju i zlatni ključ na crvenom polju",
+    "tekstPitanja": "Na zastavi kojeg se prekomorksog teritorija nalazi crvena tvrđava na bijelom polju i zlatni ključ na crvenom polju?",
     "odgovori": [
       "Gibraltara",
       "Malte",
@@ -641,37 +641,37 @@
   },
   {
     "brojPitanja": 15064,
-    "tekstPitanja": "Glumica Gabrielle Anwar možda je najpoznatija po sceni iz filma Miris žene u kojoj pleše s-kojim glumcem",
+    "tekstPitanja": "Glumica Gabrielle Anwar možda je najpoznatija po sceni iz filma Miris žene u kojoj pleše s-kojim glumcem?",
     "odgovori": [
       "Al Pacinom",
-      "Netočan odgovor 1",
-      "Netočan odgovor 2"
+      "Georgeom Clooneyjem",
+      "Garyjem Cooperom"
     ],
     "tocanOdgovor": 1
   },
   {
     "brojPitanja": 15065,
-    "tekstPitanja": "Na kojem se našem otoku nalazi 800 m duga pješčana plaža Sakarun",
+    "tekstPitanja": "Na kojem se našem otoku nalazi 800 m duga pješčana plaža Sakarun?",
     "odgovori": [
-      "Netočan odgovor 1",
-      "Netočan odgovor 2",
+      "Krku",
+      "Cresu",
       "Dugom otoku"
     ],
     "tocanOdgovor": 3
   },
   {
     "brojPitanja": 15066,
-    "tekstPitanja": "Koji je topnički projektil u naslovu velikog hita Brune Marsa iz 2010",
+    "tekstPitanja": "Koji je topnički projektil u naslovu velikog hita Brune Marsa iz 2010.?",
     "odgovori": [
-      "Netočan odgovor 1",
+      "Pištolj",
       "Granata",
-      "Netočan odgovor 2"
+      "Dimna bomba"
     ],
     "tocanOdgovor": 2
   },
   {
     "brojPitanja": 15067,
-    "tekstPitanja": "Koju je bilbijsku junakinju Gustav Klimt naslikao 1901 i 1909",
+    "tekstPitanja": "Koju je biblijsku junakinju Gustav Klimt naslikao 1901. i 1909.?",
     "odgovori": [
       "Juditu",
       "Klaru",
@@ -681,7 +681,7 @@
   },
   {
     "brojPitanja": 15068,
-    "tekstPitanja": "Na svjetskom prvenstvu u atletici 2015 srebro u skoku u vis je osvojila Hrvatica,a broncu i zlat sunarodnjakinje iz-koje zemlje",
+    "tekstPitanja": "Na svjetskom prvenstvu u atletici 2015. srebro u skoku u vis je osvojila Hrvatica, a broncu i zlato sunarodnjakinja iz-koje zemlje?",
     "odgovori": [
       "Srbije",
       "Rusije",
@@ -691,7 +691,7 @@
   },
   {
     "brojPitanja": 15069,
-    "tekstPitanja": "Nijagara istječe iz jezera Erie,a utječe u koje Veliko jezero",
+    "tekstPitanja": "Nijagara istječe iz jezera Erie, a utječe u koje Veliko jezero?",
     "odgovori": [
       "Majestic",
       "Superior",
@@ -701,7 +701,7 @@
   },
   {
     "brojPitanja": 15070,
-    "tekstPitanja": "Koje je meso glavni sastojak pastrami sendviča",
+    "tekstPitanja": "Koje je meso glavni sastojak pastrami sendviča?",
     "odgovori": [
       "Govedina",
       "Svinjetina",
@@ -711,7 +711,7 @@
   },
   {
     "brojPitanja": 15071,
-    "tekstPitanja": "Racineova Fedra remek-djelo je iz kojeg književngo razdoblja",
+    "tekstPitanja": "Racineova Fedra remek-djelo je iz kojeg književngo razdoblja?",
     "odgovori": [
       "Renesanse",
       "Klasicizma",
@@ -721,17 +721,17 @@
   },
   {
     "brojPitanja": 15072,
-    "tekstPitanja": "Mosin-Nagant i Lee-Enfield vrste su kojeg vatrenog oružja",
+    "tekstPitanja": "Koji glumac glumi Anakin Skywalkera u prethodnicima ratova zvijezda",
     "odgovori": [
-      "Pištolja",
-      "Snajpera",
-      "Pušaka"
+      "Chris Evans",
+      "Mark Hamill",
+      "Hayden Christensen"
     ],
     "tocanOdgovor": 3
   },
   {
     "brojPitanja": 15073,
-    "tekstPitanja": "Kolo smrti je peti i posljendji iflm iz kojeg akcijskog serijala",
+    "tekstPitanja": "Kolo smrti je peti i posljendji film iz kojeg akcijskog serijala?",
     "odgovori": [
       "Smrtonosno oružje",
       "Prljavi Harry",
@@ -741,7 +741,7 @@
   },
   {
     "brojPitanja": 15074,
-    "tekstPitanja": "Koje su prijevozno sredstvo Kostov,CUpač i Bulaja posudili Dancima i dobili nagradu za fer-plej Pierre Coubertin",
+    "tekstPitanja": "Koje su prijevozno sredstvo Kostov, Cupač i Bulaja posudili Dancima i dobili nagradu za fer-plej Pierre Coubertin?",
     "odgovori": [
       "Bicikl",
       "Jedrilicu",
@@ -751,17 +751,17 @@
   },
   {
     "brojPitanja": 15075,
-    "tekstPitanja": "Zak oji su se -izam zalagali atentatori Luigi Lucheni,Gaetano Breschi i Leon Czolgosz",
+    "tekstPitanja": "Koji serijal knjiga je napisala britanska književnica J. K. Rowling?",
     "odgovori": [
-      "Socijalizam",
-      "Komunizam",
-      "Anarhizam"
+      "Lord of the Rings",
+      "Twilight",
+      "Harry Potter"
     ],
     "tocanOdgovor": 3
   },
   {
     "brojPitanja": 15076,
-    "tekstPitanja": "Kako se naziva tip bankarstva u kojem nema kamata pa zajmodavac zarađuje,primjerice u podjeli profita",
+    "tekstPitanja": "Kako se naziva tip bankarstva u kojem nema kamata pa zajmodavac zarađuje, primjerice u podjeli profita?",
     "odgovori": [
       "Dokapitalno bankarstvo",
       "Islamskom",
@@ -771,7 +771,7 @@
   },
   {
     "brojPitanja": 15077,
-    "tekstPitanja": "Koji je spoj sumpora analogan vodi jer mu je atom sumpora na mjestu atoma kisika u vodi",
+    "tekstPitanja": "Koji je spoj sumpora analogan vodi jer mu je atom sumpora na mjestu atoma kisika u vodi?",
     "odgovori": [
       "Sumpornatrij",
       "Sumpornik",
@@ -781,7 +781,7 @@
   },
   {
     "brojPitanja": 15078,
-    "tekstPitanja": "Iznad kojg je našeg otočnog grada opservatorij geodetskog fakulteta sveučilišta u Zagrebu",
+    "tekstPitanja": "Iznad kojeg je našeg otočnog grada opservatorij geodetskog fakulteta sveučilišta u Zagrebu?",
     "odgovori": [
       "Krk",
       "Hvara",
@@ -791,7 +791,7 @@
   },
   {
     "brojPitanja": 15079,
-    "tekstPitanja": "Koji se jendostavni alkohol u kozmetici upotrebljava kao omekšivač i ublaživač,a u pasti za zube kao vlažilo",
+    "tekstPitanja": "Koji se jednostavni alkohol u kozmetici upotrebljava kao omekšivač i ublaživač, a u pasti za zube kao vlažilo?",
     "odgovori": [
       "Etanol",
       "Glicerol",
@@ -801,17 +801,17 @@
   },
   {
     "brojPitanja": 15080,
-    "tekstPitanja": "Koji rod čovjekolikih majmuna metaforički označava krupnog i grubog tjelohranitelja",
+    "tekstPitanja": "Ulogom u kojem filmu se proslovaio glumac Tom Blyth?",
     "odgovori": [
-      "Šimpanza",
-      "Gorila",
-      "Orangutan"
+      "Igre Gladi: Balada pjevica i zmija",
+      "Harry Potter i zatočenik Azkabana ",
+      "Kapetan Amerika: Prvi Osvetnik"
     ],
-    "tocanOdgovor": 2
+    "tocanOdgovor": 1
   },
   {
     "brojPitanja": 15081,
-    "tekstPitanja": "Koji je troslovni germanizam u sjeverozapadnoj Hrvatskoj uvelike zamijenio riječ suknja",
+    "tekstPitanja": "Koji je troslovni germanizam u sjeverozapadnoj Hrvatskoj uvelike zamijenio riječ suknja?",
     "odgovori": [
       "Šik",
       "Šos",
@@ -821,7 +821,7 @@
   },
   {
     "brojPitanja": 15082,
-    "tekstPitanja": "Na kojem su otoku Lunjski maslinici sa stablima masline starim do 1600 godina",
+    "tekstPitanja": "Na kojem su otoku Lunjski maslinici sa stablima masline starim do 1600. godina?",
     "odgovori": [
       "Pagu",
       "Korčula",
@@ -831,7 +831,7 @@
   },
   {
     "brojPitanja": 15083,
-    "tekstPitanja": "Koliko grba ima vrsta deve koju zovemo dromedar",
+    "tekstPitanja": "Koliko grba ima vrsta deve koju zovemo dromedar?",
     "odgovori": [
       "Nula grba",
       "Tri grbe",
@@ -841,7 +841,7 @@
   },
   {
     "brojPitanja": 15084,
-    "tekstPitanja": "Koji je,uz Ferojski,službeni jezik na Farksim otocima",
+    "tekstPitanja": "Koji je, uz Ferojski, službeni jezik na Farksim otocima?",
     "odgovori": [
       "Katalonski",
       "Danski",
@@ -851,7 +851,7 @@
   },
   {
     "brojPitanja": 15085,
-    "tekstPitanja": "U školi kojeg se ruskog grada u Sjevernoj Osetiji 2004 odvijala talačka kriza s tragičnim posljedicama",
+    "tekstPitanja": "U školi kojeg se ruskog grada u Sjevernoj Osetiji 2004. odvijala talačka kriza s tragičnim posljedicama?",
     "odgovori": [
       "Moskva",
       "Sankt Peterburg",
@@ -861,7 +861,7 @@
   },
   {
     "brojPitanja": 15086,
-    "tekstPitanja": "Za koji je film iz 1995 Emir Kusturica u Cannesu dobio svoju drugu Zlatnu palmu",
+    "tekstPitanja": "Za koji je film iz 1995. Emir Kusturica u Cannesu dobio svoju drugu Zlatnu palmu?",
     "odgovori": [
       "Arizona Dream",
       "Underground",
@@ -871,7 +871,7 @@
   },
   {
     "brojPitanja": 15087,
-    "tekstPitanja": "Po licenci koje je njemačke kompanije automobile sastavljala Tvornica automobila Sarajevo",
+    "tekstPitanja": "Po licenci koje je njemačke kompanije automobila sastavljala Tvornica automobila Sarajevo?",
     "odgovori": [
       "Audi",
       "Mercedes-Benz",
@@ -881,7 +881,7 @@
   },
   {
     "brojPitanja": 15088,
-    "tekstPitanja": "Otac kojeg je dramskog junaka ubiejn za popodnevnog drijemeža otrovom ulivenim u uho",
+    "tekstPitanja": "Otac kojeg je dramskog junaka ubijen za popodnevnog drijemeža otrovom ulivenim u uho?",
     "odgovori": [
       "Romea na apneju",
       "Amletovog oca",
@@ -891,7 +891,7 @@
   },
   {
     "brojPitanja": 15089,
-    "tekstPitanja": "Lisabon je središte ženskog fada,a središte fada u kojem uglavnom pjevaju muškarci-koji sveučilišni grad",
+    "tekstPitanja": "Lisabon je središte ženskog fada, a središte fada u kojem uglavnom pjevaju muškarci - kojeg sveučilišnog grada?",
     "odgovori": [
       "Braga",
       "Porto",
@@ -901,7 +901,7 @@
   },
   {
     "brojPitanja": 15090,
-    "tekstPitanja": "Svrgavanjem kojeg je hrvatskog kneza 879. na vlast došao Branimir",
+    "tekstPitanja": "Svrgavanjem kojeg je hrvatskog kneza 879. na vlast došao Branimir?",
     "odgovori": [
       "Zdeslava",
       "Zvonimir",
@@ -911,17 +911,17 @@
   },
   {
     "brojPitanja": 15091,
-    "tekstPitanja": "Kod kojeg se poludragog kamena čije ime na grčkom znači nokat neprozirni mliječnobijeli slojevi smjenjuju s obojenima",
+    "tekstPitanja": "Tko je napisao poznatu pjesmu iz serijala Brzi i žestoki - See you again?",
     "odgovori": [
-      "Opal",
-      "Mramor",
-      "Oniksa"
+      "Bruno Mars",
+      "Justin Bieber",
+      "Charlie Puth"
     ],
     "tocanOdgovor": 3
   },
   {
     "brojPitanja": 15092,
-    "tekstPitanja": "Koji je katolički monaški red osnovan u 13.st. u Ugarskoj narod zvao Bijeli fratri",
+    "tekstPitanja": "Koji je katolički monaški red osnovan u 13. st. u Ugarskoj narod zvao Bijeli fratri?",
     "odgovori": [
       "Pavline",
       "Kartuzijanci",
@@ -931,7 +931,7 @@
   },
   {
     "brojPitanja": 15093,
-    "tekstPitanja": "Rinitis praćen šmrcanjem i kihanjem upala je sluznice kojeg organa",
+    "tekstPitanja": "Rinitis praćen šmrcanjem i kihanjem upala je sluznice kojeg organa?",
     "odgovori": [
       "Sinusa",
       "Pluća",
@@ -941,7 +941,7 @@
   },
   {
     "brojPitanja": 15094,
-    "tekstPitanja": "Na čelu kojeg je carstva bio Darije I",
+    "tekstPitanja": "Na čelu kojeg je carstva bio Darije I?",
     "odgovori": [
       "Babilonskog",
       "Perzijskog",
@@ -951,7 +951,7 @@
   },
   {
     "brojPitanja": 15095,
-    "tekstPitanja": "Tragični događaj u kojem su grad 1945 inspirirali Kurta Vonneguta za roman Klaonica 5",
+    "tekstPitanja": "Tragični događaj u kojem su grad 1945. inspirirali Kurta Vonneguta za roman Klaonica 5?",
     "odgovori": [
       "Berlin",
       "Dresdenu",
@@ -961,7 +961,7 @@
   },
   {
     "brojPitanja": 15096,
-    "tekstPitanja": "U kojem je o 5 njujorških upravnih pdoručja smješten Greenwich village",
+    "tekstPitanja": "U kojem je od 5 njujorških upravnih područja smješten Greenwich village?",
     "odgovori": [
       "Bronxu",
       "Queensu",
@@ -971,7 +971,7 @@
   },
   {
     "brojPitanja": 15097,
-    "tekstPitanja": "Ljetno računanje vremena u Europskoj Uniji počinje posljednje nedjelje kojeg mjeseca",
+    "tekstPitanja": "Ljetno računanje vremena u Europskoj Uniji počinje posljednje nedjelje kojeg mjeseca?",
     "odgovori": [
       "Ožujka",
       "Svibnja",
@@ -981,7 +981,7 @@
   },
   {
     "brojPitanja": 15098,
-    "tekstPitanja": "U kojem se glasovitom spomeniku maurske arhitekture u Europi nalaze Lavlje i Mirtino dvorište",
+    "tekstPitanja": "U kojem se glasovitom spomeniku maurske arhitekture u Europi nalaze Lavlje i Mirtino dvorište?",
     "odgovori": [
       "Alcazaba",
       "Mezquita",
@@ -991,7 +991,7 @@
   },
   {
     "brojPitanja": 15099,
-    "tekstPitanja": "Naziv kojeg Altmanovog filma,u prijevodu s Francuskog,znači spremno za obuvanje",
+    "tekstPitanja": "Naziv kojeg Altmanovog filma, u prijevodu s Francuskog, znači spremno za obuvanje?",
     "odgovori": [
       "Gotovo za petama",
       "Oćiljeva enkoreza",
@@ -1001,7 +1001,7 @@
   },
   {
     "brojPitanja": 15100,
-    "tekstPitanja": "Koji je njujorški bend imao hitove Denise,Hanging on the telephone i Hearth of glass",
+    "tekstPitanja": "Koji je njujorški bend imao hitove Denise, Hanging on the telephone i Hearth of glass?",
     "odgovori": [
       "Interpol",
       "Blondie",
@@ -1011,7 +1011,7 @@
   },
   {
     "brojPitanja": 15101,
-    "tekstPitanja": "Kako se zvao otac animirnaog Homera Simpsona",
+    "tekstPitanja": "Kako se zvao otac animirnaog Homera Simpsona?",
     "odgovori": [
       "Bart",
       "Herbert",
@@ -1021,7 +1021,7 @@
   },
   {
     "brojPitanja": 15102,
-    "tekstPitanja": "Kojeg su ministra unutanrjih poslova Franje Josipa u mladosti zvali ministar barikada",
+    "tekstPitanja": "Kojeg su ministra unutanrjih poslova Franje Josipa u mladosti zvali ministar barikada?",
     "odgovori": [
       "Alexandra Bacha",
       "Viktor Kovačić",
@@ -1031,7 +1031,7 @@
   },
   {
     "brojPitanja": 15103,
-    "tekstPitanja": "Koja atletska disciplina povezuje Ruth Beitiju,Kajsu Bergqvist i Anu Čičerovu",
+    "tekstPitanja": "Koja atletska disciplina povezuje Ruth Beitiju, Kajsu Bergqvist i Anu Čičerovu?",
     "odgovori": [
       "Trčanje 100m",
       "Bacanje diska",
@@ -1041,7 +1041,7 @@
   },
   {
     "brojPitanja": 15104,
-    "tekstPitanja": "Koja je glumica i oskarovka zapažene uloge ostvarila u filmovima supruga Blakea Edwardsa",
+    "tekstPitanja": "Koja je glumica i oskarovka zapažene uloge ostvarila u filmovima supruga Blakea Edwardsa?",
     "odgovori": [
       "Cate Blanchett",
       "Julie Andrews",
@@ -1051,7 +1051,7 @@
   },
   {
     "brojPitanja": 15105,
-    "tekstPitanja": "Kojeg je engleskog pomorca kraljica Elizabeta 1581. proglasila vitezom nakon što je oplovio svijet",
+    "tekstPitanja": "Kojeg je engleskog pomorca kraljica Elizabeta 1581. proglasila vitezom nakon što je oplovio svijet?",
     "odgovori": [
       "Francisa Drakea",
       "James Cook",
@@ -1061,7 +1061,7 @@
   },
   {
     "brojPitanja": 15106,
-    "tekstPitanja": "Kojei me povezuje modnog dizajnera Langa i umjetničkog fotografa Newtona",
+    "tekstPitanja": "Koje ime povezuje modnog dizajnera Langa i umjetničkog fotografa Newtona?",
     "odgovori": [
       "Porsche",
       "Ford",
@@ -1071,7 +1071,7 @@
   },
   {
     "brojPitanja": 15107,
-    "tekstPitanja": "Kojoj porodici sisavaca pripadjau zebre",
+    "tekstPitanja": "Kojoj porodici sisavaca pripadjau zebre?",
     "odgovori": [
       "Konjima",
       "Medvjedima",
@@ -1081,7 +1081,7 @@
   },
   {
     "brojPitanja": 15108,
-    "tekstPitanja": "Koji je prvi nepčanik ili palatal u hrvatskoj abecedi",
+    "tekstPitanja": "Koji je prvi nepčanik ili palatal u hrvatskoj abecedi?",
     "odgovori": [
       "K",
       "Č",
@@ -1091,7 +1091,7 @@
   },
   {
     "brojPitanja": 15109,
-    "tekstPitanja": "Na kojem su našem otoku mjesta Svirče i Sveta Nedjelja",
+    "tekstPitanja": "Na kojem su našem otoku mjesta Svirče i Sveta Nedjelja?",
     "odgovori": [
       "Visu",
       "Hvaru",
@@ -1101,7 +1101,7 @@
   },
   {
     "brojPitanja": 15110,
-    "tekstPitanja": "Radnja koje se drame odvija u božićno vrijeme u kući bankovnog činovniak Torvalda Helmera",
+    "tekstPitanja": "Radnja koje se drame odvija u božićno vrijeme u kući bankovnog činovniak Torvalda Helmera?",
     "odgovori": [
       "Lutrija",
       "Marica",
@@ -1111,7 +1111,7 @@
   },
   {
     "brojPitanja": 15111,
-    "tekstPitanja": "Koje ime idjele roman Stanislawa Lema i turističko nasleje pokraj Šibenika",
+    "tekstPitanja": "Koje ime dijele roman Stanislawa Lema i turističko nasleje pokraj Šibenika?",
     "odgovori": [
       "Luminar",
       "Solaris",
@@ -1121,7 +1121,7 @@
   },
   {
     "brojPitanja": 15112,
-    "tekstPitanja": "U kojoj su današnjoj državi rođeni George Orwell,Vivien Legh i Salman Rushdie",
+    "tekstPitanja": "U kojoj su današnjoj državi rođeni George Orwell, Vivien Legh i Salman Rushdie?",
     "odgovori": [
       "Engleskoj",
       "Rusiji",
@@ -1131,7 +1131,7 @@
   },
   {
     "brojPitanja": 15113,
-    "tekstPitanja": "Biografiju kojeg je glazbenika Zlatko Gall donio u knjizi Tajna vještina",
+    "tekstPitanja": "Biografiju kojeg je glazbenika Zlatko Gall donio u knjizi Tajna vještina?",
     "odgovori": [
       "Gibbonijevu.",
       "Gibonnijevu",
@@ -1141,7 +1141,7 @@
   },
   {
     "brojPitanja": 15114,
-    "tekstPitanja": "U kojoj je maloj državi glavni grad Male",
+    "tekstPitanja": "U kojoj je maloj državi glavni grad Male?",
     "odgovori": [
       "Manili",
       "Maldivima",
@@ -1151,7 +1151,7 @@
   },
   {
     "brojPitanja": 15115,
-    "tekstPitanja": "U kojem se galilejskom gradu Isus nastanio nakon odlaska iz Nazareta",
+    "tekstPitanja": "U kojem se galilejskom gradu Isus nastanio nakon odlaska iz Nazareta?",
     "odgovori": [
       "Tiberejskom",
       "Betlehemu",
@@ -1161,7 +1161,7 @@
   },
   {
     "brojPitanja": 15116,
-    "tekstPitanja": "Kojim je metalom financirana flota kojom su Atenjanini porazili Perzijance kod Salamine",
+    "tekstPitanja": "Kojim je metalom financirana flota kojom su Atenjanini porazili Perzijance kod Salamine?",
     "odgovori": [
       "Zlatom",
       "Srebrom",
@@ -1171,7 +1171,7 @@
   },
   {
     "brojPitanja": 15117,
-    "tekstPitanja": "Kojom arapskom državom od sredine 18.st. suvereno vlada obitelj al-Sabah",
+    "tekstPitanja": "Kojom arapskom državom od sredine 18. st. suvereno vlada obitelj al-Sabah?",
     "odgovori": [
       "Saudijskom Arabijom",
       "Kuvajtom",

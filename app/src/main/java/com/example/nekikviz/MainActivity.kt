@@ -3,6 +3,7 @@ package com.example.nekikviz
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -13,12 +14,14 @@ import androidx.navigation.compose.NavHost
 import com.example.nekikviz.ui.theme.NekikvizTheme
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.qgen.PredmetiEkran
 
 class MainActivity : ComponentActivity() {
     private lateinit var ttsCitacEkrana: CitacEkrana
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ttsCitacEkrana = CitacEkrana(this)
+        enableEdgeToEdge()
         setContent {
             NekikvizTheme {
                 Surface(
@@ -37,12 +40,12 @@ fun Pocetak(ttsCitacEkrana: CitacEkrana) {
 
     val navigiranjeEkrana = rememberNavController()
 
-    NavHost(navController = navigiranjeEkrana, startDestination = "ekranPitanja") {
+    NavHost(navController = navigiranjeEkrana, startDestination = "glavniEkran"){
         composable("ekranPitanja") { EkranPitanja(navigiranjeEkrana, ttsCitacEkrana,0) }
         composable("zanimljivost") { Zanimljivost(navigiranjeEkrana, ttsCitacEkrana) }
         composable("rezultati") { EkranRezultata(navigiranjeEkrana,ttsCitacEkrana) }
         composable("glavniEkran") { GlavniEkran(navigiranjeEkrana,ttsCitacEkrana) }
         composable("ekranKodova") { EkranKodova(navigiranjeEkrana) }
+        composable("predmetiEkran"){PredmetiEkran(navigiranjeEkrana, prosireno = false)}
     }
 }
-
