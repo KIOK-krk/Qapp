@@ -64,7 +64,6 @@ fun EkranPitanja(
 
     val context = LocalContext.current
     val ucitavanje by viewModel.ucitavanje.collectAsState()
-    val trenutnoPitanje: Int = 0
 
     LaunchedEffect(Unit) {
         when (nacinRada) {
@@ -74,17 +73,24 @@ fun EkranPitanja(
         }
     }
 
+    val trenutnoPitanjeIndex by viewModel.trenutnoPitanjeIndex.collectAsState()
     val pitanja: List<Pitanje> = viewModel.svaPitanja.collectAsState().value
+    val trenutnoPitanje: Pitanje
+
 
     if (ucitavanje == true) {
         CircularProgressIndicator()
     } else {
+
+        trenutnoPitanje = pitanja[trenutnoPitanjeIndex]
+        viewModel.startajVrijeme()
+
         LaunchedEffect(Unit) {
             ttsCitacEkrana.citaj(
-                pitanja[0].tekstPitanja + "? " +
-                        "odgovor pod brojem jedan " + pitanja[0].odgovori[0] + " " +
-                        "odgovor pod brojem dva " + pitanja[0].odgovori[1] + " " +
-                        "odgovor pod brojem tri  " + pitanja[0].odgovori[2]
+                trenutnoPitanje.tekstPitanja + "? " +
+                        "odgovor pod brojem jedan " + trenutnoPitanje.odgovori[0] + " " +
+                        "odgovor pod brojem dva " + trenutnoPitanje.odgovori[1] + " " +
+                        "odgovor pod brojem tri  " + trenutnoPitanje.odgovori[2]
             )
         }
 
@@ -101,32 +107,44 @@ fun EkranPitanja(
                 )
                 .padding(top = 28.dp)
         ) {
+            Text(text = viewModel.bodovi.collectAsState().value.toString())
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
                     .padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                NaslovEkrana((trenutnoPitanje + 1).toString(),navigiranjeEkrana)
-                VrijemeProgressBar(vrijeme = 0.75f)
-                TekstPitanja(pitanja[trenutnoPitanje].tekstPitanja)
+                NaslovEkrana((trenutnoPitanjeIndex + 1).toString(), navigiranjeEkrana)
+                VrijemeProgressBar(vrijeme = viewModel.vrijeme.collectAsState().value / 20000f)
+                TekstPitanja(trenutnoPitanje.tekstPitanja)
                 GumbZaOdgovor(
-                    pitanja[trenutnoPitanje].odgovori[0],
-                    pitanja[trenutnoPitanje].tocanOdgovor,
-                    1
+                    trenutnoPitanje.odgovori[0],
+                    trenutnoPitanje.tocanOdgovor,
+                    1,
+                    viewModel,
+                    trenutnoPitanjeIndex
                 )
                 GumbZaOdgovor(
-                    pitanja[trenutnoPitanje].odgovori[1],
-                    pitanja[trenutnoPitanje].tocanOdgovor,
-                    2
+                    trenutnoPitanje.odgovori[1],
+                    trenutnoPitanje.tocanOdgovor,
+                    2,
+                    viewModel,
+                    trenutnoPitanjeIndex
                 )
                 GumbZaOdgovor(
-                    pitanja[trenutnoPitanje].odgovori[2],
-                    pitanja[trenutnoPitanje].tocanOdgovor,
-                    3
+                    trenutnoPitanje.odgovori[2],
+                    trenutnoPitanje.tocanOdgovor,
+                    3,
+                    viewModel,
+                    trenutnoPitanjeIndex
                 )
             }
-            IkonaZaDalje(R.drawable.gumbzadalje, Modifier.align(Alignment.BottomEnd),navigiranjeEkrana)
+            IkonaZaDalje(
+                R.drawable.gumbzadalje,
+                Modifier.align(Alignment.BottomEnd),
+                navigiranjeEkrana,
+                viewModel
+            )
         }
     }
 }
@@ -146,7 +164,7 @@ fun NaslovEkrana(brojPitanja: String,navigiranjeEkrana:NavHostController) {
             modifier = Modifier
                 .size(32.dp)
                 .padding()
-                .clickable{
+                .clickable {
                     navigiranjeEkrana.navigate("glavniEkran")
                 }
         )
@@ -245,10 +263,21 @@ fun TekstPitanja(pitanjeTekst: String) {
 
 
 @Composable
-fun GumbZaOdgovor(text: String, tocan: Int, poredak: Int) {
+fun GumbZaOdgovor(
+    text: String,
+    tocan: Int,
+    poredak: Int,
+    viewModel: EkranPitanjaViewModel,
+    trenutnoPitanjeIndex: Int
+) {
     var bojaGumba by remember { mutableStateOf(Color.Transparent) }
-    var stisnutGumb by remember { mutableStateOf(false) }
+    var stisnutGumb = viewModel.stisnutGumb.collectAsState().value
     var iconRes by remember { mutableStateOf(0) }
+
+    LaunchedEffect(trenutnoPitanjeIndex) {
+        bojaGumba = Color.Transparent
+        iconRes = 0
+    }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -262,26 +291,29 @@ fun GumbZaOdgovor(text: String, tocan: Int, poredak: Int) {
             )
             .padding(horizontal = 16.dp, vertical = 20.dp)
             .clickable {
-                if (tocan == poredak) {
-                    bojaGumba = Color(0xff08c9c9)
-                    iconRes = R.drawable.tocno
-                } else {
-                    bojaGumba = Color(0xbaff372a)
-                    iconRes = R.drawable.krivo
+                if (stisnutGumb == false) {
+                    if (tocan == poredak) {
+                        bojaGumba = Color(0xff08c9c9)
+                        iconRes = R.drawable.tocno
+                    } else {
+                        bojaGumba = Color(0xbaff372a)
+                        iconRes = R.drawable.krivo
+                    }
+                    stisnutGumb = true
+                    viewModel.odgovoriPitanje(poredak)
                 }
-                stisnutGumb = true
             }
     ) {
-        if (stisnutGumb == true) {
-            Image(
-                painter = painterResource(id = iconRes),
-                contentDescription = "Answer Icon",
-                modifier = Modifier.size(32.dp)
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-        } else {
-            Spacer(modifier = Modifier.width(40.dp))
-        }
+//        if (stisnutGumb == true) {
+//            Image(
+//                painter = painterResource(id = iconRes),
+//                contentDescription = "Answer Icon",
+//                modifier = Modifier.size(32.dp)
+//            )
+//            Spacer(modifier = Modifier.width(8.dp))
+//        } else {
+        Spacer(modifier = Modifier.width(40.dp))
+//        }
         Text(
             text = text, color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Bold
         )
@@ -290,15 +322,21 @@ fun GumbZaOdgovor(text: String, tocan: Int, poredak: Int) {
 
 
 @Composable
-fun IkonaZaDalje(iconRes: Int, modifier: Modifier = Modifier,navigiranjeEkrana: NavHostController) {
+fun IkonaZaDalje(
+    iconRes: Int,
+    modifier: Modifier = Modifier,
+    navigiranjeEkrana: NavHostController,
+    viewModel: EkranPitanjaViewModel
+) {
     Image(
         painter = painterResource(id = iconRes),
         contentDescription = "Navigation Icon",
         modifier = modifier
             .size(150.dp)
             .padding(16.dp)
-            .clickable{
-                navigiranjeEkrana.navigate("zanimljivost")
+            .clickable {
+                viewModel.sljedecePitanje()
+                //navigiranjeEkrana.navigate("zanimljivost")
             }
     )
 }

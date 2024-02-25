@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -59,7 +60,7 @@ fun EkranKodova(navigiranjeEkrana: NavHostController) {
             Naslov(navigiranjeEkrana)
             ListaGumbova(buttons = buttonList, buttonTexts = buttonTextList)
             GumbZaKod()
-    }
+        }
     }
 }
 
@@ -97,6 +98,8 @@ fun Naslov(navigiranjeEkrana: NavHostController) {
 @Composable
 fun ListaGumbova(buttons: List<String>, buttonTexts: List<String>) {
     require(buttons.size == buttonTexts.size)
+    var listaKodova = LocalStorageManager.getList(LocalContext.current)
+    // LocalStorageManager.addItemToList(LocalContext.current, "Kod2")
 
     LazyColumn(
         modifier = Modifier
@@ -104,7 +107,7 @@ fun ListaGumbova(buttons: List<String>, buttonTexts: List<String>) {
 
 
         ) {
-        items(buttons.size) { index ->
+        items(listaKodova.size) { index ->
             OutlinedButton(
                 onClick = { },
                 border = BorderStroke(width = 1.dp, color = Color.White),
@@ -117,7 +120,7 @@ fun ListaGumbova(buttons: List<String>, buttonTexts: List<String>) {
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = buttonTexts[index],
+                    text = listaKodova[index].toString(),
                     fontSize = 18.sp
                 )
             }
@@ -135,14 +138,20 @@ val buttonTextList = listOf(
 
 @Composable
 fun GumbZaKod() {
-    Column(
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.End
+    Box(
+        modifier = Modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.BottomEnd
     ) {
         FloatingActionButton(
-            onClick = {},
+            onClick = {
+
+            },
             contentColor = Color.White,
-            containerColor = colorResource(R.color.orange)
+            containerColor = colorResource(R.color.orange),
+            modifier = Modifier
+                .padding(32.dp)
+                .size(56.dp)
         ) {
             Icon(
                 Icons.Filled.Add, "Floating action button.",

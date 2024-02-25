@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -17,6 +18,31 @@ class EkranPitanjaViewModel : ViewModel() {
 
     private val _pitanja = MutableStateFlow<List<Pitanje>>(emptyList())
     val svaPitanja: StateFlow<List<Pitanje>> = _pitanja
+
+    private val _bodovi = MutableStateFlow(0L)
+    val bodovi : StateFlow<Long> = _bodovi
+
+    private val _vrijeme = MutableStateFlow(20000L)
+    val vrijeme : StateFlow<Long> = _vrijeme
+
+    private val _prikaziZanimljivost = MutableStateFlow(false)
+    val prikaziZanimljivost : StateFlow<Boolean> = _prikaziZanimljivost
+
+    private val _trenutnoPitanjeIndex = MutableStateFlow(0)
+    val trenutnoPitanjeIndex : StateFlow<Int> = _trenutnoPitanjeIndex
+
+    private val _brojTocnihOdgovora = MutableStateFlow(0)
+    val brojTocnihOdgovora : StateFlow<Int> = _brojTocnihOdgovora
+
+    private val _brojNetocnihOdgovora = MutableStateFlow(0)
+    val brojNetocnihOdgovora : StateFlow<Int> = _brojNetocnihOdgovora
+
+    private val _stisnutGumb = MutableStateFlow(false)
+    val stisnutGumb : StateFlow<Boolean> = _stisnutGumb
+
+    init {
+
+    }
 
     fun ucitajPitanjaZabava(context: Context) = viewModelScope.launch {
         try {
@@ -31,5 +57,39 @@ class EkranPitanjaViewModel : ViewModel() {
         } catch (e: Exception) {
             Log.e("EkranPitanjaViewModel", "Greska kod ucitavanja", e)
         }
+    }
+
+    fun startajVrijeme(){
+        viewModelScope.launch {
+            _vrijeme.value = 20000L
+            while(_vrijeme.value > 0){
+                _vrijeme.value = _vrijeme.value - 1000
+                delay(1000)
+            }
+            //sljedecePitanje()
+        }
+    }
+
+    fun odgovoriPitanje(brojOdgovora:Int){
+        val trenutnoPitanje = _pitanja.value[_trenutnoPitanjeIndex.value]
+        if(trenutnoPitanje.tocanOdgovor == brojOdgovora){
+            // dodavanje bodova za tocan odgovor
+            _bodovi.value = _bodovi.value + 100 + _vrijeme.value/100
+            Log.d("LL","Vrijeme: ${_vrijeme.value}")
+            _brojTocnihOdgovora.value = _brojTocnihOdgovora.value + 1
+        } else {
+            _brojNetocnihOdgovora.value = _brojNetocnihOdgovora.value + 1
+        }
+        _stisnutGumb.value = true
+        // if zanimljivost nije prazan string
+        // _prikaziZanimljivost.value = true
+    }
+
+    fun sljedecePitanje(){
+        // TODO dodati random izbor pitanja od liste _pitanja
+        _trenutnoPitanjeIndex.value = (_trenutnoPitanjeIndex.value + 1) % _pitanja.value.size
+        _vrijeme.value = 20000L
+        _stisnutGumb.value = false
+        _prikaziZanimljivost.value = false
     }
 }
