@@ -32,6 +32,7 @@ import androidx.navigation.NavHostController
 @Composable
 fun GlavniEkran(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkrana) {
 
+
     Box(
         modifier = Modifier
             .fillMaxSize()
