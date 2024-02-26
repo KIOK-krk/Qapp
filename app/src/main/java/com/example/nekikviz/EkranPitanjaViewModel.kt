@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 
+
 class EkranPitanjaViewModel : ViewModel() {
     private val _ucitavanje = MutableStateFlow(true)
     val ucitavanje: StateFlow<Boolean> = _ucitavanje
