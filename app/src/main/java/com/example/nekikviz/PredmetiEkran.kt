@@ -73,6 +73,7 @@ fun PredmetiEkran(
     navigiranjeEkrana: NavHostController,
     viewModel: PredmetiViewModel = viewModel(),
     prosireno: Boolean
+
 ) {
     Pozadina()
     viewModel.dohvatiSveLekcije()

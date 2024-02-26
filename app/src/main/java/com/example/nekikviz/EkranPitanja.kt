@@ -155,7 +155,7 @@ fun NaslovEkrana(brojPitanja: String,navigiranjeEkrana:NavHostController) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start,
-        modifier = Modifier.padding(bottom = 8.dp)
+        modifier = Modifier.padding(top = 30.dp,bottom = 8.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.povratak),
@@ -211,8 +211,6 @@ fun VrijemeProgressBar(vrijeme: Float) {
         }
 
     }
-
-
 
     LinearProgressIndicator(
         progress = progress.value,

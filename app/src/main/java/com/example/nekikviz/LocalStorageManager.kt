@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.SharedPreferences
 
 object LocalStorageManager {
-    private const val PREF_NAME = "MyAppPreferences"
-    private const val PREF_KEY_LIST = "myList"
+    private const val PREF_NAME = "spremanje podataka"
+    private const val PREF_KEY_LIST = "lista kodova"
 
-    fun saveList(context: Context, list: List<String>) {
+    fun snimiListu(context: Context, list: List<String>) {
         val sharedPreferences: SharedPreferences = context.getSharedPreferences(
             PREF_NAME, Context.MODE_PRIVATE
         )
@@ -16,7 +16,7 @@ object LocalStorageManager {
         editor.apply()
     }
 
-    fun getList(context: Context): List<String> {
+    fun dohvatiListu(context: Context): List<String> {
         val sharedPreferences: SharedPreferences = context.getSharedPreferences(
             PREF_NAME, Context.MODE_PRIVATE
         )
@@ -24,15 +24,16 @@ object LocalStorageManager {
         return savedList.toList()
     }
 
-    fun addItemToList(context: Context, item: String) {
-        val currentList = getList(context).toMutableList()
+    fun dodajKod(context: Context, item: String) {
+        val currentList = dohvatiListu(context).toMutableList()
         currentList.add(item)
-        saveList(context, currentList)
+        snimiListu(context, currentList)
+
     }
 
-    fun removeItemFromList(context: Context, item: String) {
-        val currentList = getList(context).toMutableList()
+    fun izbrisiKod(context: Context, item: String) {
+        val currentList = dohvatiListu(context).toMutableList()
         currentList.remove(item)
-        saveList(context, currentList)
+        snimiListu(context, currentList)
     }
 }

@@ -2,6 +2,7 @@ package com.example.nekikviz
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,12 +40,12 @@ fun EkranRezultata(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEk
                 )
             )
     ) {
-        DobarRezultat()
+        DobarRezultat(navigiranjeEkrana)
     }
 }
 
 @Composable
-fun DobarRezultat() {
+fun DobarRezultat(navigiranjeEkrana: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -67,7 +68,6 @@ fun DobarRezultat() {
             )
         }
     }
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
@@ -93,7 +93,6 @@ fun DobarRezultat() {
 
         )
     }
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
@@ -134,13 +133,14 @@ fun DobarRezultat() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(end = 10.dp)
+                .clickable { navigiranjeEkrana.navigate("ekranPitanja") }
         )
     }
 }
 
 
 @Composable
-fun LosRezultat() {
+fun LosRezultat(navigiranjeEkrana: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -211,8 +211,7 @@ fun LosRezultat() {
             modifier = Modifier
                 .size(160.dp)
                 .offset(x = 8.dp, y = 310.dp)
-
-
+                .clickable { navigiranjeEkrana.navigate("ekranPitanja") }
         )
     }
 

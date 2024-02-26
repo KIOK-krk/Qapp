@@ -1,5 +1,6 @@
 package com.example.nekikviz
 
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -14,18 +15,29 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -35,15 +47,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 
 
 @Composable
-fun EkranKodova(navigiranjeEkrana: NavHostController) {
+fun EkranKodova(navigiranjeEkrana: NavHostController,viewModel: EkranKodovaViewModel = viewModel())
+    {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -58,8 +72,9 @@ fun EkranKodova(navigiranjeEkrana: NavHostController) {
     ) {
         Column {
             Naslov(navigiranjeEkrana)
-            ListaGumbova(buttons = buttonList, buttonTexts = buttonTextList)
-            GumbZaKod()
+            ListaGumbova(viewModel)
+            UpisivanjeKoda(viewModel)
+
         }
     }
 }
@@ -69,7 +84,7 @@ fun Naslov(navigiranjeEkrana: NavHostController) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start,
-        modifier = Modifier.padding(top = 40.dp, bottom = 8.dp, start = 20.dp)
+        modifier = Modifier.padding(top = 50.dp, bottom = 8.dp, start = 20.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.povratak),
@@ -96,18 +111,15 @@ fun Naslov(navigiranjeEkrana: NavHostController) {
 }
 
 @Composable
-fun ListaGumbova(buttons: List<String>, buttonTexts: List<String>) {
-    require(buttons.size == buttonTexts.size)
-    var listaKodova = LocalStorageManager.getList(LocalContext.current)
+fun ListaGumbova(viewModel: EkranKodovaViewModel) {
+    var listaKodova = viewModel.listaKodova.collectAsState()
     // LocalStorageManager.addItemToList(LocalContext.current, "Kod2")
 
     LazyColumn(
         modifier = Modifier
-            .padding(top = 90.dp, bottom = 16.dp),
-
-
-        ) {
-        items(listaKodova.size) { index ->
+            .padding(top = 70.dp, bottom = 16.dp)
+    ) {
+        items(listaKodova.value.size) { index ->
             OutlinedButton(
                 onClick = { },
                 border = BorderStroke(width = 1.dp, color = Color.White),
@@ -120,7 +132,7 @@ fun ListaGumbova(buttons: List<String>, buttonTexts: List<String>) {
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = listaKodova[index].toString(),
+                    text = listaKodova.value[index].toString(),
                     fontSize = 18.sp
                 )
             }
@@ -129,15 +141,14 @@ fun ListaGumbova(buttons: List<String>, buttonTexts: List<String>) {
 }
 
 
-val buttonList = listOf("Button 1", "Button 2", "Button 3", "Button 4", "Button 5", "Button 6")
-val buttonTextList = listOf(
-    "Predmet - Lekcija - Autor", "Predmet - Lekcija - Autor",
-    "Predmet - Lekcija - Autor", "Predmet - Lekcija - Autor",
-    "Predmet - Lekcija - Autor", "Predmet - Lekcija - Autor"
-)
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GumbZaKod() {
+fun UpisivanjeKoda(viewModel: EkranKodovaViewModel) {
+    var showDialog by remember { mutableStateOf(false) }
+    var text by remember { mutableStateOf("") }
+    val kontekst = LocalContext.current
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -145,7 +156,7 @@ fun GumbZaKod() {
     ) {
         FloatingActionButton(
             onClick = {
-
+                showDialog = true
             },
             contentColor = Color.White,
             containerColor = colorResource(R.color.orange),
@@ -157,29 +168,69 @@ fun GumbZaKod() {
                 Icons.Filled.Add, "Floating action button.",
             )
         }
-    }
-}
+        if (showDialog) {
+            Dialog(onDismissRequest = { showDialog = false })
+            {
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(230.dp)
+                        .width(300.dp)
+                        .padding(16.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(Color.White)
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.Top,
+                        horizontalAlignment = Alignment.Start
+                    ) {
+                        Text(
+                            text = "Unesi kod",
+                            modifier = Modifier
+                                .padding(top = 20.dp, start = 15.dp)
+                        )
 
-@Composable
-fun UpisivanjeKoda(onDismissRequest: () -> Unit) {
-    Dialog(
-        onDismissRequest = {onDismissRequest()})
-    {
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-                .padding(16.dp),
-            shape = RoundedCornerShape(16.dp),
-        ) {
-            Text(
-                text = "Upisi kod",
-                modifier = Modifier
-                    .fillMaxSize()
-                    .wrapContentSize(Alignment.Center),
-                textAlign = TextAlign.Center,
-            )
-
+                        TextField(
+                            value = text,
+                            onValueChange = { text = it },
+                            label = { Text("") },
+                            modifier = Modifier
+                                .padding(top = 25.dp, start = 10.dp, end = 10.dp),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color.Transparent
+                            )
+                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.Bottom,
+                            horizontalArrangement = Arrangement.End,
+                        ) {
+                            TextButton(
+                                onClick = {LocalStorageManager.dodajKod(kontekst,text)
+                                          viewModel.ucitajListuKodova(kontekst)},
+                                modifier = Modifier.padding(8.dp)
+                            ) {
+                                Text(
+                                    text = "Potvrdi",
+                                    fontWeight = FontWeight.ExtraBold,
+                                    color = colorResource(id = R.color.green)
+                                )
+                            }
+                            TextButton(
+                                onClick = {showDialog = false},
+                                modifier = Modifier.padding(8.dp)
+                            ) {
+                                Text(
+                                    text = "Otkaži",
+                                    fontWeight = FontWeight.ExtraBold,
+                                    color = colorResource(id = R.color.red)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
