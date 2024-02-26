@@ -1,5 +1,6 @@
 package com.example.nekikviz
 
+import android.util.Log
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
@@ -64,6 +65,26 @@ fun EkranPitanja(
 
     val context = LocalContext.current
     val ucitavanje by viewModel.ucitavanje.collectAsState()
+    val vrijeme by viewModel.vrijeme.collectAsState()
+    val trenutnoPitanjeIndex by viewModel.trenutnoPitanjeIndex.collectAsState()
+    val pitanja: List<Pitanje> = viewModel.svaPitanja.collectAsState().value
+    val trenutnoPitanje: Pitanje
+
+    LaunchedEffect(trenutnoPitanjeIndex, ucitavanje) {
+        if (!ucitavanje) {
+            viewModel.startajVrijeme()
+
+            // Ako imate logiku za čitanje teksta pitanja, osigurajte da se i ona pokreće ovdje
+            viewModel.svaPitanja.value.getOrNull(trenutnoPitanjeIndex)?.let { trenutnoPitanje ->
+                ttsCitacEkrana.citaj(
+                    "${trenutnoPitanje.tekstPitanja}? " +
+                            "odgovor pod brojem jedan ${trenutnoPitanje.odgovori[0]} " +
+                            "odgovor pod brojem dva ${trenutnoPitanje.odgovori[1]} " +
+                            "odgovor pod brojem tri ${trenutnoPitanje.odgovori[2]}"
+                )
+            }
+        }
+    }
 
     LaunchedEffect(Unit) {
         when (nacinRada) {
@@ -73,9 +94,6 @@ fun EkranPitanja(
         }
     }
 
-    val trenutnoPitanjeIndex by viewModel.trenutnoPitanjeIndex.collectAsState()
-    val pitanja: List<Pitanje> = viewModel.svaPitanja.collectAsState().value
-    val trenutnoPitanje: Pitanje
 
 
     if (ucitavanje == true) {
@@ -83,16 +101,6 @@ fun EkranPitanja(
     } else {
 
         trenutnoPitanje = pitanja[trenutnoPitanjeIndex]
-        viewModel.startajVrijeme()
-
-        LaunchedEffect(Unit) {
-            ttsCitacEkrana.citaj(
-                trenutnoPitanje.tekstPitanja + "? " +
-                        "odgovor pod brojem jedan " + trenutnoPitanje.odgovori[0] + " " +
-                        "odgovor pod brojem dva " + trenutnoPitanje.odgovori[1] + " " +
-                        "odgovor pod brojem tri  " + trenutnoPitanje.odgovori[2]
-            )
-        }
 
         Box(
             modifier = Modifier
@@ -107,7 +115,6 @@ fun EkranPitanja(
                 )
                 .padding(top = 28.dp)
         ) {
-            Text(text = viewModel.bodovi.collectAsState().value.toString())
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
@@ -115,7 +122,7 @@ fun EkranPitanja(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 NaslovEkrana((trenutnoPitanjeIndex + 1).toString(), navigiranjeEkrana)
-                VrijemeProgressBar(vrijeme = viewModel.vrijeme.collectAsState().value / 20000f)
+                VrijemeProgressBar(vrijeme = viewModel.vrijeme.collectAsState().value)
                 TekstPitanja(trenutnoPitanje.tekstPitanja)
                 GumbZaOdgovor(
                     trenutnoPitanje.odgovori[0],
@@ -155,7 +162,7 @@ fun NaslovEkrana(brojPitanja: String,navigiranjeEkrana:NavHostController) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start,
-        modifier = Modifier.padding(top = 30.dp,bottom = 8.dp)
+        modifier = Modifier.padding(bottom = 8.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.povratak),
@@ -182,9 +189,20 @@ fun NaslovEkrana(brojPitanja: String,navigiranjeEkrana:NavHostController) {
     }
 }
 
+@Composable
+fun VrijemeProgressBar(vrijeme: Long) {
+    Log.d("Vrijeme1",  vrijeme.toString())
+    val progress = vrijeme.toFloat() / 20000f // 20 sekundi je ukupno vrijeme
+    LinearProgressIndicator(
+        progress = progress,
+        trackColor = Color(0xFF7646FE),
+        color = Color(0xFFFF9051),
+        modifier = Modifier.fillMaxWidth().height(8.dp)
+    )
+}
 
 @Composable
-fun VrijemeProgressBar(vrijeme: Float) {
+fun VrijemeProgressBar2(vrijeme: Float) {
     val ukupnoVrijeme = 5000L
     val trenutnoVrijeme = remember { mutableStateOf(ukupnoVrijeme) }
 
@@ -194,9 +212,7 @@ fun VrijemeProgressBar(vrijeme: Float) {
             durationMillis = ukupnoVrijeme.toInt(),
             easing = LinearEasing
         ),
-        finishedListener = {
-            //  kod sto kad istkne vrijeme
-        }
+        finishedListener = {}
     )
 
     LaunchedEffect(key1 = true){
@@ -211,6 +227,8 @@ fun VrijemeProgressBar(vrijeme: Float) {
         }
 
     }
+
+
 
     LinearProgressIndicator(
         progress = progress.value,

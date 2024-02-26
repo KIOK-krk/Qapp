@@ -395,7 +395,7 @@ fun karticaLekcija(
         shape = RoundedCornerShape(8.dp),
         border = BorderStroke(1.dp, Color.White),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFF797bea)
+            containerColor = Color(0xFF8587FF)
         ),
         modifier = Modifier
             .padding(bottom = 8.dp, start = 8.dp, end = 8.dp)

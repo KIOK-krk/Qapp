@@ -1,5 +1,6 @@
 package com.example.qgen
 
+
 import com.example.nekikviz.Lekcija
 import com.example.nekikviz.Pitanje
 import com.google.firebase.firestore.ktx.firestore
@@ -27,6 +28,7 @@ object DataRepository {
         }
         awaitClose { slusajPromjene.remove() }
     }
+
     fun dohvatiLekcije(): Flow<List<Lekcija>> = callbackFlow addSnapshotListener@{
         val collectionReferenca = db.collection("Lekcije")
         val slusajPromjene = collectionReferenca.addSnapshotListener { snapshot, e ->
@@ -43,6 +45,7 @@ object DataRepository {
         }
         awaitClose { slusajPromjene.remove() }
     }
+
     fun dohvatiPitanja(): Flow<List<Pitanje>> = callbackFlow addSnapshotListener@{
         val collectionReferenca = db.collection("Pitanja")
         val slusajPromjene = collectionReferenca.addSnapshotListener { snapshot, e ->
@@ -59,4 +62,31 @@ object DataRepository {
         }
         awaitClose { slusajPromjene.remove() }
     }
+
+    fun obrisiPitanje(idPitanja: String) = callbackFlow {
+        val documentReferenca = db.collection("Pitanja").document(idPitanja)
+        documentReferenca.delete()
+            .addOnSuccessListener {
+                // Uspješno brisanje pitanja.
+                trySend(Result.success(Unit)).isSuccess
+            }
+            .addOnFailureListener { e ->
+                // Došlo je do greške prilikom brisanja pitanja.
+                close(e)
+            }
+        awaitClose { }
+    }
+
+    fun dodajPitanje(pitanje: Pitanje) = callbackFlow {
+        val collectionReferenca = db.collection("Pitanja")
+        collectionReferenca.add(pitanje)
+            .addOnSuccessListener { documentReference ->
+                trySend(Result.success(documentReference.id)).isSuccess
+            }
+            .addOnFailureListener { e ->
+                close(e)
+            }
+        awaitClose { }
+    }
+
 }

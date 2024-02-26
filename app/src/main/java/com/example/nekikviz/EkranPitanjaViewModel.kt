@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -52,44 +53,46 @@ class EkranPitanjaViewModel : ViewModel() {
             }
             val json = Json { ignoreUnknownKeys = true }
             _pitanja.value = json.decodeFromString(jsonStr)
-            Log.d("EkranPitanjaViewModel", "Broj ucitanih pitanja: ${_pitanja.value.size}")
             _ucitavanje.value = false
         } catch (e: Exception) {
             Log.e("EkranPitanjaViewModel", "Greska kod ucitavanja", e)
         }
-    }
-
-    fun startajVrijeme(){
-        viewModelScope.launch {
-            _vrijeme.value = 20000L
-            while(_vrijeme.value > 0){
-                _vrijeme.value = _vrijeme.value - 1000
-                delay(1000)
-            }
-            //sljedecePitanje()
-        }
+        // uzimamo 10 nasumicnih pitanja
+        _pitanja.value = _pitanja.value.shuffled().take(10)
     }
 
     fun odgovoriPitanje(brojOdgovora:Int){
         val trenutnoPitanje = _pitanja.value[_trenutnoPitanjeIndex.value]
         if(trenutnoPitanje.tocanOdgovor == brojOdgovora){
             // dodavanje bodova za tocan odgovor
-            _bodovi.value = _bodovi.value + 100 + _vrijeme.value/100
-            Log.d("LL","Vrijeme: ${_vrijeme.value}")
+            _bodovi.value = _bodovi.value + 1 + _vrijeme.value/1000
             _brojTocnihOdgovora.value = _brojTocnihOdgovora.value + 1
         } else {
             _brojNetocnihOdgovora.value = _brojNetocnihOdgovora.value + 1
         }
         _stisnutGumb.value = true
+        tajmerJob?.cancel()
         // if zanimljivost nije prazan string
         // _prikaziZanimljivost.value = true
     }
+    private var tajmerJob: Job? = null
 
-    fun sljedecePitanje(){
-        // TODO dodati random izbor pitanja od liste _pitanja
+    fun startajVrijeme() {
+        tajmerJob?.cancel()
+        tajmerJob = viewModelScope.launch {
+            _vrijeme.value = 20000L
+            while (_vrijeme.value > 0) {
+                delay(1000)
+                _vrijeme.value -= 1000
+            }
+            _stisnutGumb.value = true
+        }
+
+    }
+
+    fun sljedecePitanje() {
         _trenutnoPitanjeIndex.value = (_trenutnoPitanjeIndex.value + 1) % _pitanja.value.size
-        _vrijeme.value = 20000L
         _stisnutGumb.value = false
-        _prikaziZanimljivost.value = false
+        startajVrijeme()
     }
 }
