@@ -1,4 +1,4 @@
-package com.example.qgen
+package com.example.nekikviz
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -50,6 +50,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.nekikviz.R
+import com.example.qgen.Predmet
+import com.example.qgen.PredmetiViewModel
 
 @Composable
 fun Pozadina() {
@@ -92,7 +94,7 @@ fun PredmetiEkran(
                 modifier = Modifier
                     .padding(top = 21.dp)
                     .size(30.dp)
-                    .clickable{
+                    .clickable {
                         navigiranjeEkrana.navigate("glavniEkran")
                     }
 
@@ -340,6 +342,7 @@ fun PredmetKartica(
     // Pretpostavimo da viewModel već prati prosireno stanje za svaki predmet
     val lekcije = viewModel.sveLekcije.collectAsState().value
         .filter { it.PredmetID == predmet.idPredmeta && it.Razred.contains(razred) }
+        .sortedBy { it.Naziv }
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -404,9 +407,9 @@ fun karticaLekcija(
             text = nazivLekcije,
             color = Color.White,
             modifier = Modifier
-//                .clickable {
-//                    navigiranjeEkrana.navigate("ListaPitanja/${nazivLekcije}/${idLekcije}")
-//                }
+                .clickable {
+                    navigiranjeEkrana.navigate("ekranPitanja/1/${idLekcije}")
+                }
                 .padding(start = 32.dp, top = 16.dp, bottom = 16.dp)
                 .fillMaxWidth()
         )

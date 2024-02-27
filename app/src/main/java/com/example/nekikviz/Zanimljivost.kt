@@ -31,7 +31,12 @@ import androidx.navigation.NavHostController
 
 
 @Composable
-fun Zanimljivost(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkrana) {
+fun Zanimljivost(
+    navigiranjeEkrana: NavHostController,
+    ttsCitacEkrana: CitacEkrana,
+    tekst: String?,
+    kraj: Boolean?
+) {
 
     LaunchedEffect(Unit) {
         ttsCitacEkrana.citaj(

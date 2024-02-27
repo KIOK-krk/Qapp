@@ -9,12 +9,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.example.nekikviz.ui.theme.NekikvizTheme
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.qgen.PredmetiEkran
+import com.example.nekikviz.ui.theme.NekikvizTheme
+
 
 class MainActivity : ComponentActivity() {
     private lateinit var ttsCitacEkrana: CitacEkrana
@@ -40,12 +39,30 @@ fun Pocetak(ttsCitacEkrana: CitacEkrana) {
 
     val navigiranjeEkrana = rememberNavController()
 
-    NavHost(navController = navigiranjeEkrana, startDestination = "glavniEkran"){
-        composable("ekranPitanja") { EkranPitanja(navigiranjeEkrana, ttsCitacEkrana,0) }
-        composable("zanimljivost") { Zanimljivost(navigiranjeEkrana, ttsCitacEkrana) }
-        composable("rezultati") { EkranRezultata(navigiranjeEkrana,ttsCitacEkrana) }
-        composable("glavniEkran") { GlavniEkran(navigiranjeEkrana,ttsCitacEkrana) }
-        composable("ekranKodova") { EkranKodova(navigiranjeEkrana,) }
-        composable("predmetiEkran"){PredmetiEkran(navigiranjeEkrana, prosireno = false)}
+    NavHost(navController = navigiranjeEkrana, startDestination = "rezultati/{3}/{2}/{5}") {
+        composable("ekranPitanja/{nacinrada}/{parametar}") { backStackEntry ->
+            EkranPitanja(
+                navigiranjeEkrana, ttsCitacEkrana,
+                nacinrada = backStackEntry.arguments?.getString("nacinrada"),
+                parametar = backStackEntry.arguments?.getString("parametar")
+            )
+        }
+        composable("zanimljivost/{tekst}/{kraj}") { backStackEntry ->
+            Zanimljivost(
+                navigiranjeEkrana, ttsCitacEkrana,
+                tekst = backStackEntry.arguments?.getString("tekst"),
+                kraj = backStackEntry.arguments?.getBoolean("kraj")
+            )
+        }
+        composable("rezultati/{tocni}/{netocni}/{bodovi}") { backStackEntry ->
+            EkranRezultata(navigiranjeEkrana, ttsCitacEkrana,
+                tocni = backStackEntry.arguments?.getString("tocni"),
+                netocni = backStackEntry.arguments?.getString("netocni"),
+                bodovi = backStackEntry.arguments?.getString("bodovi")
+            )
+        }
+        composable("glavniEkran") { GlavniEkran(navigiranjeEkrana, ttsCitacEkrana) }
+        composable("ekranKodova") { EkranKodova(navigiranjeEkrana) }
+        composable("predmetiEkran") { PredmetiEkran(navigiranjeEkrana, prosireno = false) }
     }
 }

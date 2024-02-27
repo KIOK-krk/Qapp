@@ -83,7 +83,10 @@ fun GlavniEkran(navigiranjeEkrana: NavHostController, ttsCitacEkrana: CitacEkran
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
                 .defaultMinSize(minHeight = 64.dp, minWidth = 280.dp),
-            onClick = { navigiranjeEkrana.navigate("ekranPitanja") },
+            onClick = {
+                val parametar = "zabava"
+                navigiranjeEkrana.navigate("ekranPitanja/0/${parametar}")
+            },
             colors = ButtonDefaults.buttonColors(colorResource(R.color.orange)),
             border = BorderStroke(width = 1.dp, color = Color.White)
         )

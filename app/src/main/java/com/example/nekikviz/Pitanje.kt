@@ -4,11 +4,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Pitanje(
-    val tekstPitanja: String = "",
-    val odgovori: List<String> = emptyList(),
-    val tocanOdgovor: Int = 0,
-    val zanimljivost: String = "",
-    val autor: String = "",
+    var tekstPitanja: String = "",
+    var odgovori: List<String> = emptyList(),
+    var tocanOdgovor: Int = 0,
+    var zanimljivost: String = "",
+    var autor: String = "",
     var idPitanja: String = "",
-    val idLekcije: String = ""
+    var idLekcije: String = ""
 )

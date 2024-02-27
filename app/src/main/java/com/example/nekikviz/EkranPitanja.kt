@@ -55,8 +55,9 @@ import kotlinx.coroutines.delay
 fun EkranPitanja(
     navigiranjeEkrana: NavHostController,
     ttsCitacEkrana: CitacEkrana,
-    nacinRada: Int,
     viewModel: EkranPitanjaViewModel = viewModel(),
+    nacinrada: String?,
+    parametar: String?,
 ) {
     // nacinRada:
     // 0 - zabava
@@ -86,11 +87,13 @@ fun EkranPitanja(
         }
     }
 
-    LaunchedEffect(Unit) {
-        when (nacinRada) {
-            0 -> viewModel.ucitajPitanjaZabava(context)
-            //1 -> viewModel.ucitajPitanjaSkola(context)
-            //2 -> viewModel.ucitajPitanjaUcitelj(context)
+    if (nacinrada != null) {
+        LaunchedEffect(nacinrada.toInt()) {
+            when (nacinrada) {
+                "0" -> viewModel.ucitajPitanjaZabava(context)
+                "1" -> viewModel.ucitajPitanjaSkola(parametar)
+                "2" -> viewModel.ucitajPitanjaOdUcitelja(parametar)
+            }
         }
     }
 
@@ -99,6 +102,7 @@ fun EkranPitanja(
     if (ucitavanje == true) {
         CircularProgressIndicator()
     } else {
+        // ako nema pitanja vratimo se natrag
 
         trenutnoPitanje = pitanja[trenutnoPitanjeIndex]
 
@@ -197,50 +201,11 @@ fun VrijemeProgressBar(vrijeme: Long) {
         progress = progress,
         trackColor = Color(0xFF7646FE),
         color = Color(0xFFFF9051),
-        modifier = Modifier.fillMaxWidth().height(8.dp)
-    )
-}
-
-@Composable
-fun VrijemeProgressBar2(vrijeme: Float) {
-    val ukupnoVrijeme = 5000L
-    val trenutnoVrijeme = remember { mutableStateOf(ukupnoVrijeme) }
-
-    val progress = animateFloatAsState(
-        targetValue = trenutnoVrijeme.value.toFloat() / ukupnoVrijeme,
-        animationSpec = TweenSpec(
-            durationMillis = ukupnoVrijeme.toInt(),
-            easing = LinearEasing
-        ),
-        finishedListener = {}
-    )
-
-    LaunchedEffect(key1 = true){
-        val pocetnoVrijeme = System.currentTimeMillis()
-        while(trenutnoVrijeme.value > 0){
-            val protekloVrijeme = System.currentTimeMillis() - pocetnoVrijeme
-            trenutnoVrijeme.value = ukupnoVrijeme - protekloVrijeme
-            if(trenutnoVrijeme.value <= 0){
-                trenutnoVrijeme.value = 0
-            }
-            delay(100L)
-        }
-
-    }
-
-
-
-    LinearProgressIndicator(
-        progress = progress.value,
-        trackColor = Color(0xFF7646FE),
-        color = Color(0xFFFF9051),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
             .height(8.dp)
     )
 }
-
 
 @Composable
 fun TekstPitanja(pitanjeTekst: String) {

@@ -1,6 +1,5 @@
 package com.example.nekikviz
 
-import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,7 +29,6 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -50,14 +48,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 
 
 @Composable
-fun EkranKodova(navigiranjeEkrana: NavHostController,viewModel: EkranKodovaViewModel = viewModel())
-    {
+fun EkranKodova(
+    navigiranjeEkrana: NavHostController,
+    viewModel: EkranKodovaViewModel = viewModel()
+) {
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -72,7 +73,7 @@ fun EkranKodova(navigiranjeEkrana: NavHostController,viewModel: EkranKodovaViewM
     ) {
         Column {
             Naslov(navigiranjeEkrana)
-            ListaGumbova(viewModel)
+            ListaGumbova(navigiranjeEkrana, viewModel)
             UpisivanjeKoda(viewModel)
 
         }
@@ -111,9 +112,9 @@ fun Naslov(navigiranjeEkrana: NavHostController) {
 }
 
 @Composable
-fun ListaGumbova(viewModel: EkranKodovaViewModel) {
+fun ListaGumbova(navigiranjeEkrana: NavHostController, viewModel: EkranKodovaViewModel) {
+    viewModel.ucitajListuKodova(LocalContext.current)
     var listaKodova = viewModel.listaKodova.collectAsState()
-    // LocalStorageManager.addItemToList(LocalContext.current, "Kod2")
 
     LazyColumn(
         modifier = Modifier
@@ -121,7 +122,9 @@ fun ListaGumbova(viewModel: EkranKodovaViewModel) {
     ) {
         items(listaKodova.value.size) { index ->
             OutlinedButton(
-                onClick = { },
+                onClick = {
+                    navigiranjeEkrana.navigate("ekranPitanja/2/${listaKodova.value[index]}")
+                },
                 border = BorderStroke(width = 1.dp, color = Color.White),
                 colors = ButtonDefaults.outlinedButtonColors(
                     contentColor = Color.White,
@@ -208,7 +211,7 @@ fun UpisivanjeKoda(viewModel: EkranKodovaViewModel) {
                         ) {
                             TextButton(
                                 onClick = {LocalStorageManager.dodajKod(kontekst,text)
-                                          viewModel.ucitajListuKodova(kontekst)},
+                                    viewModel.ucitajListuKodova(kontekst)},
                                 modifier = Modifier.padding(8.dp)
                             ) {
                                 Text(
