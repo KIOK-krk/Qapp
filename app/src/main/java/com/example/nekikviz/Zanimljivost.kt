@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -35,14 +36,13 @@ fun Zanimljivost(
     navigiranjeEkrana: NavHostController,
     ttsCitacEkrana: CitacEkrana,
     tekst: String?,
-    kraj: Boolean?
+    kraj: Boolean?,
+    viewModel: EkranPitanjaViewModel
 ) {
 
     LaunchedEffect(Unit) {
         ttsCitacEkrana.citaj(
-            "Procesor (engl. central processing unit − CPU) " +
-                    "glavni je dio računala koji vođen zadanim programskim" +
-                    " naredbama izvodi osnovne radnje nad podacima."
+            tekst.toString()
         )
     }
     Box(
@@ -78,7 +78,7 @@ fun Zanimljivost(
                     modifier = Modifier
                         .align(Alignment.Center)
                         .padding(top = 2.dp, start = 20.dp, end = 20.dp)
-                        .size(width = 320.dp, height = 400.dp)
+                        .size(width = 320.dp, height = 500.dp)
                         .offset(y = 100.dp),
                     shape = RoundedCornerShape(20.dp),
                     colors = CardDefaults.cardColors(Color.White),
@@ -86,11 +86,9 @@ fun Zanimljivost(
                     ) {
 
                     Text(
-                        text = "Procesor (engl. central processing unit − CPU) " +
-                                "glavni je dio računala koji vođen zadanim programskim" +
-                                " naredbama izvodi osnovne radnje nad podacima.",
+                        text = tekst.toString(),
                         color = Color(0xff280a82),
-                        fontSize = 22.sp,
+                        fontSize = 20.sp,
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
@@ -104,7 +102,7 @@ fun Zanimljivost(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .size(100.dp)
-                        .offset(y = -260.dp)
+                        .offset(y = -350.dp)
                 )
 
                 Image(
@@ -113,9 +111,11 @@ fun Zanimljivost(
                     modifier = Modifier
                         .align(Alignment.Center)
                         .size(140.dp)
-                        .offset(y = 300.dp)
+                        .offset(y = 350.dp)
                         .clickable{
-                            navigiranjeEkrana.navigate("rezultati")
+                            viewModel.sljedecePitanje()
+                            viewModel.zanimljivost(false)
+                            //navigiranjeEkrana.navigate("rezultati")
                         }
                 )
             }

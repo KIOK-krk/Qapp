@@ -35,14 +35,19 @@ class EkranPitanjaViewModel : ViewModel() {
     val trenutnoPitanjeIndex : StateFlow<Int> = _trenutnoPitanjeIndex
 
     private val _brojTocnihOdgovora = MutableStateFlow(0)
-    val brojTocnihOdgovora : StateFlow<Int> = _brojTocnihOdgovora
+    val brojTocnihOdgovora: StateFlow<Int> = _brojTocnihOdgovora
 
     private val _brojNetocnihOdgovora = MutableStateFlow(0)
-    val brojNetocnihOdgovora : StateFlow<Int> = _brojNetocnihOdgovora
+    val brojNetocnihOdgovora: StateFlow<Int> = _brojNetocnihOdgovora
 
     private val _stisnutGumb = MutableStateFlow(false)
-    val stisnutGumb : StateFlow<Boolean> = _stisnutGumb
+    val stisnutGumb: StateFlow<Boolean> = _stisnutGumb
 
+    private val _pokaziZanimljivost = MutableStateFlow(false)
+    val pokaziZanimljivost: StateFlow<Boolean> = _pokaziZanimljivost
+
+    private val _kraj = MutableStateFlow(false)
+    val kraj: StateFlow<Boolean> = _kraj
     init {
 
     }
@@ -61,7 +66,8 @@ class EkranPitanjaViewModel : ViewModel() {
             Log.e("EkranPitanjaViewModel", "Greska kod ucitavanja", e)
         }
         // uzimamo 10 nasumicnih pitanja
-        _pitanja.value = _pitanja.value.shuffled().take(10)
+        //_pitanja.value = _pitanja.value.shuffled().take(3)
+        _pitanja.value = listOf(_pitanja.value[15], _pitanja.value[5], _pitanja.value[17],_pitanja.value[26],_pitanja.value[44],_pitanja.value[65]).shuffled().take(3)
     }
 
     fun odgovoriPitanje(brojOdgovora:Int){
@@ -94,9 +100,13 @@ class EkranPitanjaViewModel : ViewModel() {
     }
 
     fun sljedecePitanje() {
-        _trenutnoPitanjeIndex.value = (_trenutnoPitanjeIndex.value + 1) % _pitanja.value.size
-        _stisnutGumb.value = false
-        startajVrijeme()
+        if (_trenutnoPitanjeIndex.value + 1 < _pitanja.value.size) {
+            _trenutnoPitanjeIndex.value = (_trenutnoPitanjeIndex.value + 1)
+            _stisnutGumb.value = false
+            startajVrijeme()
+        } else {
+            _kraj.value = true
+        }
     }
 
     fun ucitajPitanjaSkola(idLekcije: String?) = viewModelScope.launch {
@@ -112,7 +122,7 @@ class EkranPitanjaViewModel : ViewModel() {
                 praznoPitanje.tekstPitanja = "Nema pitanja za ovu lekciju"
                 praznoPitanje.autor = "Nepoznato"
                 praznoPitanje.idLekcije = "-1"
-                praznoPitanje.odgovori = listOf("", "", "")
+                praznoPitanje.odgovori = listOf("Treba najmanje 5 pitanja?", "Imate li internet vezu?", "Pokušajte drugu lekciju")
                 praznoPitanje.tocanOdgovor = 1
                 praznoPitanje.zanimljivost = "Nema zanimljivosti za ovu lekciju"
                 _stisnutGumb.value = true
@@ -135,13 +145,17 @@ class EkranPitanjaViewModel : ViewModel() {
                 praznoPitanje.tekstPitanja = "Nema pitanja za ovaj kod. Potrebno je najmanje 5 pitanja"
                 praznoPitanje.autor = "Nepoznato"
                 praznoPitanje.idLekcije = "-1"
-                praznoPitanje.odgovori = listOf("", "", "")
+                praznoPitanje.odgovori = listOf("Treba najmanje 5 pitanja?", "Imate li internet vezu?", "Provjerite vaš kod")
                 praznoPitanje.tocanOdgovor = 1
                 praznoPitanje.zanimljivost = "Nema zanimljivosti za ovu lekciju"
                 _stisnutGumb.value = true
-                _vrijeme.value=0
+                _vrijeme.value = 0
                 _pitanja.value = listOf(praznoPitanje)
             }
         }
+    }
+
+    fun zanimljivost(zanimljivostDaNe: Boolean) {
+        _prikaziZanimljivost.value = zanimljivostDaNe
     }
 }

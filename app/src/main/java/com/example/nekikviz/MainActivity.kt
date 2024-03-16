@@ -38,20 +38,16 @@ class MainActivity : ComponentActivity() {
 fun Pocetak(ttsCitacEkrana: CitacEkrana) {
 
     val navigiranjeEkrana = rememberNavController()
+    val tocni = "2"
+    val netocni = "3"
+    val bodovi = "5"
 
-    NavHost(navController = navigiranjeEkrana, startDestination = "rezultati/{3}/{2}/{5}") {
+    NavHost(navController = navigiranjeEkrana, startDestination = "glavniEkran") {
         composable("ekranPitanja/{nacinrada}/{parametar}") { backStackEntry ->
             EkranPitanja(
                 navigiranjeEkrana, ttsCitacEkrana,
                 nacinrada = backStackEntry.arguments?.getString("nacinrada"),
                 parametar = backStackEntry.arguments?.getString("parametar")
-            )
-        }
-        composable("zanimljivost/{tekst}/{kraj}") { backStackEntry ->
-            Zanimljivost(
-                navigiranjeEkrana, ttsCitacEkrana,
-                tekst = backStackEntry.arguments?.getString("tekst"),
-                kraj = backStackEntry.arguments?.getBoolean("kraj")
             )
         }
         composable("rezultati/{tocni}/{netocni}/{bodovi}") { backStackEntry ->

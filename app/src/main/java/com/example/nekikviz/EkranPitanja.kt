@@ -1,9 +1,6 @@
 package com.example.nekikviz
 
 import android.util.Log
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.TweenSpec
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -48,7 +45,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import kotlinx.coroutines.delay
 
 
 @Composable
@@ -70,6 +66,11 @@ fun EkranPitanja(
     val trenutnoPitanjeIndex by viewModel.trenutnoPitanjeIndex.collectAsState()
     val pitanja: List<Pitanje> = viewModel.svaPitanja.collectAsState().value
     val trenutnoPitanje: Pitanje
+    val pokaziZanimljivost = viewModel.prikaziZanimljivost.collectAsState().value
+    val bodovi = viewModel.bodovi.collectAsState().value
+    val netocni = viewModel.brojNetocnihOdgovora.collectAsState().value
+    val tocni = viewModel.brojTocnihOdgovora.collectAsState().value
+    val kraj = viewModel.kraj.collectAsState().value
 
     LaunchedEffect(trenutnoPitanjeIndex, ucitavanje) {
         if (!ucitavanje) {
@@ -98,64 +99,84 @@ fun EkranPitanja(
     }
 
 
-
     if (ucitavanje == true) {
         CircularProgressIndicator()
     } else {
         // ako nema pitanja vratimo se natrag
 
         trenutnoPitanje = pitanja[trenutnoPitanjeIndex]
-
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color(0xFF7FA3FF),
-                            Color(0xFF634FDC)
-                        )
-                    )
-                )
-                .padding(top = 28.dp)
+        if (kraj == true) {
+            val t: String = tocni.toString()
+            val n: String = netocni.toString()
+            val b: String = bodovi.toString()
+            navigiranjeEkrana.navigate("rezultati/${t}/${n}/${b}")
+        }
+        if (pokaziZanimljivost == true &&
+            trenutnoPitanje.idPitanja != "-1"
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                NaslovEkrana((trenutnoPitanjeIndex + 1).toString(), navigiranjeEkrana)
-                VrijemeProgressBar(vrijeme = viewModel.vrijeme.collectAsState().value)
-                TekstPitanja(trenutnoPitanje.tekstPitanja)
-                GumbZaOdgovor(
-                    trenutnoPitanje.odgovori[0],
-                    trenutnoPitanje.tocanOdgovor,
-                    1,
-                    viewModel,
-                    trenutnoPitanjeIndex
-                )
-                GumbZaOdgovor(
-                    trenutnoPitanje.odgovori[1],
-                    trenutnoPitanje.tocanOdgovor,
-                    2,
-                    viewModel,
-                    trenutnoPitanjeIndex
-                )
-                GumbZaOdgovor(
-                    trenutnoPitanje.odgovori[2],
-                    trenutnoPitanje.tocanOdgovor,
-                    3,
-                    viewModel,
-                    trenutnoPitanjeIndex
-                )
-            }
-            IkonaZaDalje(
-                R.drawable.gumbzadalje,
-                Modifier.align(Alignment.BottomEnd),
-                navigiranjeEkrana,
+            Zanimljivost(
+                navigiranjeEkrana = navigiranjeEkrana,
+                ttsCitacEkrana = ttsCitacEkrana,
+                tekst = trenutnoPitanje.zanimljivost.toString(),
+                kraj = false,
                 viewModel
             )
+        } else {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color(0xFF7FA3FF),
+                                Color(0xFF634FDC)
+                            )
+                        )
+                    )
+                    .padding(top = 28.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(horizontal = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    NaslovEkrana((trenutnoPitanjeIndex + 1).toString(), navigiranjeEkrana)
+                    VrijemeProgressBar(vrijeme = viewModel.vrijeme.collectAsState().value)
+                    TekstPitanja(trenutnoPitanje.tekstPitanja)
+                    GumbZaOdgovor(
+                        trenutnoPitanje.odgovori[0],
+                        trenutnoPitanje.tocanOdgovor,
+                        1,
+                        viewModel,
+                        trenutnoPitanjeIndex
+                    )
+                    GumbZaOdgovor(
+                        trenutnoPitanje.odgovori[1],
+                        trenutnoPitanje.tocanOdgovor,
+                        2,
+                        viewModel,
+                        trenutnoPitanjeIndex
+                    )
+                    GumbZaOdgovor(
+                        trenutnoPitanje.odgovori[2],
+                        trenutnoPitanje.tocanOdgovor,
+                        3,
+                        viewModel,
+                        trenutnoPitanjeIndex
+                    )
+                }
+                IkonaZaDalje(
+                    R.drawable.gumbzadalje,
+                    Modifier.align(Alignment.BottomEnd),
+                    navigiranjeEkrana,
+                    ttsCitacEkrana,
+                    pokaziZanimljivost,
+                    nacinrada,
+                    trenutnoPitanje,
+                    viewModel
+                )
+            }
         }
     }
 }
@@ -307,6 +328,10 @@ fun IkonaZaDalje(
     iconRes: Int,
     modifier: Modifier = Modifier,
     navigiranjeEkrana: NavHostController,
+    ttsCitacEkrana: CitacEkrana,
+    pokaziZanimljivost: Boolean,
+    nacinrada: String?,
+    trenutnoPitanje: Pitanje,
     viewModel: EkranPitanjaViewModel
 ) {
     Image(
@@ -316,8 +341,15 @@ fun IkonaZaDalje(
             .size(150.dp)
             .padding(16.dp)
             .clickable {
-                viewModel.sljedecePitanje()
-                //navigiranjeEkrana.navigate("zanimljivost")
+                if (nacinrada == "0") {
+                    viewModel.sljedecePitanje()
+                } else
+                    if(trenutnoPitanje.zanimljivost != "")
+                        viewModel.zanimljivost(true)
+                    else viewModel.sljedecePitanje()
+                //viewModel.sljedecePitanje()
+                //pokaziZanimljivost=true
+                //navigiranjeEkrana.navigate("zanimljivost/${tekst}")
             }
     )
 }

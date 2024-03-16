@@ -49,12 +49,15 @@ fun EkranRezultata(
                 )
             )
     ) {
-        DobarRezultat(navigiranjeEkrana,bodovi)
+        if (bodovi != null) {
+            DobarRezultat(navigiranjeEkrana,bodovi, tocni, netocni)
+        }
     }
 }
 
 @Composable
-fun DobarRezultat(navigiranjeEkrana: NavHostController,bodovi: Int?) {
+fun DobarRezultat(navigiranjeEkrana: NavHostController,
+                  bodovi: String?, tocni: String?, netocni: String?) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -77,7 +80,7 @@ fun DobarRezultat(navigiranjeEkrana: NavHostController,bodovi: Int?) {
 
             if (bodovi != null) {
                 Image(
-                    painter = if(bodovi>=3) painterResource(id = R.drawable.dobarrezultat)
+                    painter = if(bodovi.toInt()>=3) painterResource(id = R.drawable.dobarrezultat)
                     else painterResource(id = R.drawable.losrezultat),
                     contentDescription = "Slika dobrog rezultata",
                     alignment = Alignment.TopCenter,
@@ -86,8 +89,8 @@ fun DobarRezultat(navigiranjeEkrana: NavHostController,bodovi: Int?) {
                         .padding(end = 35.dp)
                 )
             }
-            }
         }
+    }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -151,7 +154,7 @@ fun DobarRezultat(navigiranjeEkrana: NavHostController,bodovi: Int?) {
                 .padding(top = 650.dp, start = 40.dp)
         )
         Text(
-            text = "170",
+            text = bodovi.toString(),
             textAlign = TextAlign.End,
             color = Color.White,
             fontSize = 22.sp,
@@ -162,16 +165,29 @@ fun DobarRezultat(navigiranjeEkrana: NavHostController,bodovi: Int?) {
         )
     }
     Text(
-        text = "9",
+        text = tocni.toString(),
         textAlign = TextAlign.Center,
         color = Color.White,
-        fontSize = 22.sp,
+        fontSize = 28.sp,
         fontWeight = FontWeight.ExtraBold,
         fontFamily = FontFamily.Monospace,
         maxLines = 1,
         modifier = Modifier
-            .width(240.dp)
-            .offset(x = (192).dp, y = 445.dp)
+            .width(100.dp)
+            .offset(x = (280).dp, y = 445.dp)
+
+    )
+    Text(
+        text = netocni.toString(),
+        textAlign = TextAlign.Center,
+        color = Color.White,
+        fontSize = 28.sp,
+        fontWeight = FontWeight.ExtraBold,
+        fontFamily = FontFamily.Monospace,
+        maxLines = 1,
+        modifier = Modifier
+            .width(100.dp)
+            .offset(x = (280).dp, y = 545.dp)
 
     )
 
@@ -189,7 +205,7 @@ fun DobarRezultat(navigiranjeEkrana: NavHostController,bodovi: Int?) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(end = 10.dp)
-                .clickable { navigiranjeEkrana.navigate("ekranPitanja") }
+                .clickable { navigiranjeEkrana.navigate("glavniEkran") }
         )
     }
 }

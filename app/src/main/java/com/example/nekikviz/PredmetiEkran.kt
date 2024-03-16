@@ -51,7 +51,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.nekikviz.R
 import com.example.qgen.Predmet
-import com.example.qgen.PredmetiViewModel
+
 
 @Composable
 fun Pozadina() {
