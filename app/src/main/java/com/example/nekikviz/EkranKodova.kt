@@ -115,6 +115,8 @@ fun Naslov(navigiranjeEkrana: NavHostController) {
 fun ListaGumbova(navigiranjeEkrana: NavHostController, viewModel: EkranKodovaViewModel) {
     viewModel.ucitajListuKodova(LocalContext.current)
     var listaKodova = viewModel.listaKodova.collectAsState()
+    viewModel.ucitajListuKorisnika(LocalContext.current)
+    var listaKorisnika = viewModel.listaKodova.collectAsState()
 
     LazyColumn(
         modifier = Modifier
@@ -134,10 +136,16 @@ fun ListaGumbova(navigiranjeEkrana: NavHostController, viewModel: EkranKodovaVie
                     .padding(start = 20.dp, end = 20.dp)
                     .fillMaxWidth()
             ) {
-                Text(
-                    text = listaKodova.value[index].toString(),
-                    fontSize = 18.sp
-                )
+                Row {
+                    Text(
+                        text = listaKodova.value[index].toString(),
+                        fontSize = 18.sp
+                    )
+                    Text(
+                        text = listaKorisnika.value[index].toString(),
+                        fontSize = 18.sp
+                    )
+                }
             }
         }
     }
