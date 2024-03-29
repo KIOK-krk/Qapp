@@ -50,6 +50,12 @@ fun Pocetak(ttsCitacEkrana: CitacEkrana) {
                 parametar = backStackEntry.arguments?.getString("parametar")
             )
         }
+        composable("ekranFlashCards/{idLekcije}"){backStackEntry ->
+            Flashcard(
+                ttsCitacEkrana,navigiranjeEkrana,
+                idLekcije = backStackEntry.arguments?.getString("idLekcije")
+            )
+        }
         composable("rezultati/{tocni}/{netocni}/{bodovi}") { backStackEntry ->
             EkranRezultata(navigiranjeEkrana, ttsCitacEkrana,
                 tocni = backStackEntry.arguments?.getString("tocni"),

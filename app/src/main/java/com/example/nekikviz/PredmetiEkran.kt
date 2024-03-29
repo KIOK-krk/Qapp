@@ -408,7 +408,8 @@ fun karticaLekcija(
             color = Color.White,
             modifier = Modifier
                 .clickable {
-                    navigiranjeEkrana.navigate("ekranPitanja/1/${idLekcije}")
+                    //navigiranjeEkrana.navigate("ekranPitanja/1/${idLekcije}")
+                    navigiranjeEkrana.navigate("ekranFlashcards/${idLekcije}")
                 }
                 .padding(start = 32.dp, top = 16.dp, bottom = 16.dp)
                 .fillMaxWidth()

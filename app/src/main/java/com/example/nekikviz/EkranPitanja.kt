@@ -183,7 +183,7 @@ fun EkranPitanja(
 
 
 @Composable
-fun NaslovEkrana(brojPitanja: String,navigiranjeEkrana:NavHostController) {
+fun NaslovEkrana(brojPitanja: String, navigiranjeEkrana: NavHostController) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start,
@@ -216,7 +216,7 @@ fun NaslovEkrana(brojPitanja: String,navigiranjeEkrana:NavHostController) {
 
 @Composable
 fun VrijemeProgressBar(vrijeme: Long) {
-    Log.d("Vrijeme1",  vrijeme.toString())
+    Log.d("Vrijeme1", vrijeme.toString())
     val progress = vrijeme.toFloat() / 20000f // 20 sekundi je ukupno vrijeme
     LinearProgressIndicator(
         progress = progress,
@@ -301,6 +301,7 @@ fun GumbZaOdgovor(
                         bojaGumba = Color(0xbaff372a)
                         iconRes = R.drawable.krivo
                     }
+
                     stisnutGumb = true
                     viewModel.odgovoriPitanje(poredak)
                 }
@@ -344,7 +345,7 @@ fun IkonaZaDalje(
                 if (nacinrada == "0") {
                     viewModel.sljedecePitanje()
                 } else
-                    if(trenutnoPitanje.zanimljivost != "")
+                    if (trenutnoPitanje.zanimljivost != "")
                         viewModel.zanimljivost(true)
                     else viewModel.sljedecePitanje()
                 //viewModel.sljedecePitanje()

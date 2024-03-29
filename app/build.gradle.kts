@@ -77,5 +77,6 @@ dependencies {
     implementation("com.google.firebase:firebase-common-ktx:20.4.2")
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.3")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("com.wajahatkarim:flippable:1.5.4")
 
 }
