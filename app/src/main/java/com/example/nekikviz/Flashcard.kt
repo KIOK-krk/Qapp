@@ -121,7 +121,6 @@ fun prednjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>)
                     .padding(end = 80.dp)
                     .offset(y = 40.dp, x = 150.dp)
             )
-
             TextButton(
                 onClick = {}
 
