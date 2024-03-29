@@ -18,5 +18,14 @@ class EkranKodovaViewModel : ViewModel(){
             _listaKodova.emit(LocalStorageManager.dohvatiListu(context))
         }
     }
+
+    private val _listaKorisnika = MutableStateFlow<List<String>>(emptyList())
+    val listaKorisnika: StateFlow<List<String>> = _listaKorisnika
+
+    fun ucitajListuKorisnika(context: Context){
+        CoroutineScope(Dispatchers.Default).launch {
+            _listaKorisnika.emit(LocalStorageManager.dohvatiListu(context))
+        }
+    }
 }
 
