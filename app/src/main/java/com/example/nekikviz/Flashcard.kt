@@ -198,11 +198,11 @@ fun zadnjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>) 
             )
     ) {
         Image(
-            painter = painterResource(id = R.drawable.upitnici),
+            painter = painterResource(id = R.drawable.uskljicnici),
             contentDescription = "Question marks",
             modifier = Modifier
                 .align(Alignment.Center)
-                .size(250.dp)
+                .size(170.dp)
 
         )
 
@@ -229,7 +229,7 @@ fun zadnjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>) 
                onClick = { /*TODO*/ },
                modifier = Modifier
                    .weight(1f)
-                   .background(colorResource(id = R.color.green)), shape = RoundedCornerShape(bottomEnd = 20.dp)
+                   .background(color = Color(0xFF09CACA)), shape = RoundedCornerShape(bottomStart = 16.dp)
            )
            {
                Text(
@@ -247,7 +247,7 @@ fun zadnjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>) 
                onClick = { /*TODO*/ },
                modifier = Modifier
                    .weight(1f)
-                   .background(colorResource(id = R.color.red)), shape = RoundedCornerShape(bottomEnd = 20.dp)
+                   .background(color = Color(0xFFFF6D64)), shape = RoundedCornerShape(bottomEnd = 16.dp)
            ){
                Text(
                    text = "Nisam",
