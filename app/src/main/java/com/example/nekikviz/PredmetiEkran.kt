@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +20,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenuItem
@@ -41,6 +44,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -49,7 +53,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.nekikviz.R
 import com.example.qgen.Predmet
 
 
@@ -331,6 +334,7 @@ fun PredmetiEkran(
 }
 
 
+
 @Composable
 fun PredmetKartica(
     predmet: Predmet,
@@ -375,7 +379,8 @@ fun PredmetKartica(
                         karticaLekcija(
                             nazivLekcije = lekcija.Naziv,
                             navigiranjeEkrana = navigiranjeEkrana,
-                            idLekcije = lekcija.idLekcije
+                            lekcija = lekcija,
+                            viewModel = viewModel
                         )
                     }
                 }
@@ -392,7 +397,8 @@ fun PredmetKartica(
 fun karticaLekcija(
     nazivLekcije: String,
     navigiranjeEkrana: NavHostController,
-    idLekcije: String
+    lekcija: Lekcija,
+    viewModel: PredmetiViewModel
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
@@ -409,10 +415,55 @@ fun karticaLekcija(
             modifier = Modifier
                 .clickable {
                     //navigiranjeEkrana.navigate("ekranPitanja/1/${idLekcije}")
-                    navigiranjeEkrana.navigate("ekranFlashcards/${idLekcije}")
+                    //navigiranjeEkrana.navigate("ekranFlashcards/${idLekcije}")
+                    viewModel.toggleLekcijaProsiren(lekcija.idLekcije)
                 }
                 .padding(start = 32.dp, top = 16.dp, bottom = 16.dp)
                 .fillMaxWidth()
         )
+        if (lekcija.prosirena) {
+            // tu ide dizajn kad se klikne na lekciju
+            // i ima dva gumba za Kviz i Flashcards
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Button(
+                    onClick = {
+                        navigiranjeEkrana.navigate("ekranPitanja/1/${lekcija.idLekcije}")
+                    },
+                    colors = ButtonDefaults.buttonColors(colorResource(R.color.purple_12)),
+                    border = BorderStroke(width = 1.dp, color = Color.White),
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .weight(1f)
+                ){
+                    Text(
+                        text = "Kviz",
+                        color = Color.White,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                Button(
+                    onClick = {
+                        navigiranjeEkrana.navigate("ekranFlashcards/${lekcija.idLekcije}")
+                    },
+                    colors = ButtonDefaults.buttonColors(colorResource(R.color.purple_12)),
+                    border = BorderStroke(width = 1.dp, color = Color.White),
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .weight(1f)
+                )
+                {
+                    Text(
+                        text = "Kartice",
+                        color = Color.White,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+        }
     }
 }

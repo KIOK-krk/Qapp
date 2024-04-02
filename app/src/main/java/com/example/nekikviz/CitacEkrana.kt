@@ -28,6 +28,10 @@ class CitacEkrana(context: Context) {
         tts?.speak(tekst, TextToSpeech.QUEUE_FLUSH, null, "")
     }
 
+    fun zaustavi() {
+        tts?.stop()
+    }
+
     fun shutDown() {
         tts?.stop()
         tts?.shutdown()

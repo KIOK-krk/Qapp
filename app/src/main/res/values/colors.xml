@@ -15,4 +15,6 @@
     <color name="cyanblue">#18CDCD</color>
     <color name="purple">#FF634FDC</color>
     <color name="red">#FFB51B1B</color>
+    <color name="purple_16">#FF7358D8</color>
+    <color name="purple_12">#FF514198</color>
 </resources>

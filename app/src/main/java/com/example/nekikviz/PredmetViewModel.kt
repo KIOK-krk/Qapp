@@ -63,4 +63,23 @@ class PredmetiViewModel : ViewModel(){
         // Ažuriranje stanja predmeta s novom listom
         predmeti.value = sviNoviPredmeti
     }
+
+    fun toggleLekcijaProsiren(idLekcije: String) {
+        // Kreiranje privremene liste za ažurirane lekcija
+        val sveNoveLekcije = mutableListOf<Lekcija>()
+
+        // Iteracija kroz listu trenutnih lekcija
+        for (lekcija in lekcije.value) {
+            if (lekcija.idLekcije == idLekcije) {
+                // Ako je pronađena lekacija s odgovarajućim ID-om,
+                // invertiramo njegovo prosireno stanje
+                sveNoveLekcije.add(lekcija.copy(prosirena = !lekcija.prosirena))
+            } else {
+                // Ako predmet nema odgovarajući ID, samo ga dodamo u listu
+                sveNoveLekcije.add(lekcija)
+            }
+        }
+        // Ažuriranje stanja predmeta s novom listom
+        lekcije.value = sveNoveLekcije
+    }
 }

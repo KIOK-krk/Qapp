@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.DividerDefaults.color
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -39,6 +38,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.wajahatkarim.flippable.FlipAnimationType
 import com.wajahatkarim.flippable.Flippable
+import com.wajahatkarim.flippable.FlippableController
 import com.wajahatkarim.flippable.rememberFlipController
 
 @Composable
@@ -47,25 +47,36 @@ fun Flashcard(
     navigiranjeEkrana: NavHostController,
     idLekcije: String?,
     viewModel: FlashcardViewModel = viewModel()
-
 ) {
     val controller = rememberFlipController()
     val pitanja: List<Pitanje> = viewModel.svaPitanja.collectAsState().value
     val ucitavanje by viewModel.ucitavanje.collectAsState()
+    val prednjaStrana by viewModel.prednjaStrana.collectAsState()
     val context = LocalContext.current
+    val trajanjeOkretanjaKartice: Int = viewModel.trajanjeOkretanjaKartice.collectAsState().value
 
     LaunchedEffect(idLekcije) {
         viewModel.ucitajPitanjaSkola(idLekcije)
     }
 
+    LaunchedEffect(prednjaStrana) {
+        if (prednjaStrana) {
+            val textZaCitanje = if (pitanja.isNotEmpty()) pitanja.get(0).tekstPitanja else ""
+            ttsCitacEkrana.citaj(textZaCitanje)
+        } else {
+            val textZaCitanje =
+                if (pitanja.isNotEmpty()) pitanja.get(0).odgovori.get(pitanja.get(0).tocanOdgovor.toInt() - 1) else ""
+            ttsCitacEkrana.citaj(textZaCitanje)
+        }
+    }
+
     DisposableEffect(
         key1 = context
-
     ) {
         (context as? Activity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
 
         onDispose {
-            (context as? Activity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            (context as? Activity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
     }
 
@@ -82,20 +93,32 @@ fun Flashcard(
             )
             .padding(28.dp)
 
-
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.slikal),
+            contentDescription = "Picture on the left",
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                //  .fillMaxSize()
+                .padding(end = 600.dp)
+                .size(230.dp)
+        )
+
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start,)
+            horizontalArrangement = Arrangement.Start,
+        )
         {
             Image(
                 painter = painterResource(id = R.drawable.povratak),
                 contentDescription = "Left Icon",
                 contentScale = ContentScale.Fit,
+                alignment = Alignment.CenterEnd,
                 modifier = Modifier
                     .size(32.dp)
                     .padding()
                     .clickable {
+                        ttsCitacEkrana.shutDown()
                         navigiranjeEkrana.navigate("predmetiEkran")
                     }
             )
@@ -110,7 +133,6 @@ fun Flashcard(
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
                     .padding(end = 670.dp)
-
             )
         }
         // kako napraviti da sve bude na cijelom ekranu
@@ -118,17 +140,17 @@ fun Flashcard(
 
             Flippable(
                 frontSide = {
-                    prednjaStranaFlashCarda(ttsCitacEkrana, pitanja)
+                    prednjaStranaFlashCarda(ttsCitacEkrana, pitanja, controller, viewModel)
                 },
 
                 backSide = {
-                    zadnjaStranaFlashCarda(ttsCitacEkrana, pitanja)
+                    zadnjaStranaFlashCarda(ttsCitacEkrana, pitanja, viewModel, controller)
                 },
                 flipController = controller,
                 modifier = Modifier
                     .padding(top = 30.dp, bottom = 30.dp, start = 120.dp, end = 120.dp),
-                flipDurationMs = 400,
-                flipOnTouch = true,
+                flipDurationMs = trajanjeOkretanjaKartice,
+                flipOnTouch = false,
                 flipEnabled = true,
                 contentAlignment = Alignment.TopCenter,
                 autoFlip = false,
@@ -138,10 +160,22 @@ fun Flashcard(
             )
         }
     }
+    Image(
+        painter = painterResource(id = R.drawable.slikad),
+        contentDescription = "Picture on the left",
+        contentScale = ContentScale.Fit,
+        alignment = Alignment.CenterEnd
+
+    )
 }
 
 @Composable
-fun prednjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>) {
+fun prednjaStranaFlashCarda(
+    ttsCitacEkrana: CitacEkrana,
+    pitanja: List<Pitanje>,
+    controller: FlippableController,
+    viewModel: FlashcardViewModel
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -156,11 +190,16 @@ fun prednjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>)
             modifier = Modifier
                 .align(Alignment.Center)
                 .size(250.dp)
-
         )
 
+        val textZaCitanje = if (pitanja.isNotEmpty()) pitanja.get(0).tekstPitanja else ""
+        ttsCitacEkrana.citaj(textZaCitanje)
+
         Text(
-            text = if (pitanja.isNotEmpty()) pitanja.get(0).tekstPitanja else "TEST 2",
+            text = if (pitanja.isNotEmpty()) pitanja.get(0).tekstPitanja
+            else {
+                "Završila/o si ponavljanje, bravo!"
+            },
             fontSize = 32.sp,
             color = Color(0xff280a82),
             fontWeight = FontWeight.ExtraBold,
@@ -170,9 +209,9 @@ fun prednjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>)
                 .padding(top = 40.dp, start = 20.dp, end = 20.dp)
                 .align(Alignment.Center)
                 .offset(y = -13.dp)
-
-
         )
+
+        if (pitanja.isNotEmpty()) {
             Text(
                 text = "Vidi odgovor >",
                 fontSize = 20.sp,
@@ -182,13 +221,23 @@ fun prednjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>)
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .padding(end = 14.dp, bottom = 10.dp)
+                    .clickable {
+                        controller.flip()
+                        viewModel.okreniKarticu()
+                    }
             )
+        }
     }
 }
 
 
 @Composable
-fun zadnjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>) {
+fun zadnjaStranaFlashCarda(
+    ttsCitacEkrana: CitacEkrana,
+    pitanja: List<Pitanje>,
+    viewModel: FlashcardViewModel,
+    controller: FlippableController,
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -197,6 +246,18 @@ fun zadnjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>) 
                 shape = RoundedCornerShape(16.dp)
             )
     ) {
+        //citanje odgovora
+        val prednjaStrana by viewModel.prednjaStrana.collectAsState()
+
+        LaunchedEffect(prednjaStrana) {
+            if (!prednjaStrana) {
+                val textZaCitanje = if (pitanja.isNotEmpty()) pitanja.get(0).odgovori.get(
+                    pitanja.get(0).tocanOdgovor.toInt() - 1
+                ) else ""
+                ttsCitacEkrana.citaj(textZaCitanje)
+            }
+        }
+
         Image(
             painter = painterResource(id = R.drawable.uskljicnici),
             contentDescription = "Question marks",
@@ -206,59 +267,86 @@ fun zadnjaStranaFlashCarda(ttsCitacEkrana: CitacEkrana, pitanja: List<Pitanje>) 
 
         )
 
-        Text(
-            text = if (pitanja.isNotEmpty()) pitanja.get(0).odgovori.get(
-                pitanja.get(0).tocanOdgovor.toInt() - 1) else "TEST",
-            fontSize = 32.sp,
-            color = Color(0xff280a82),
-            fontWeight = FontWeight.ExtraBold,
-            lineHeight = 32.sp,
-            textAlign = TextAlign.Center,
+        val textZaCitanje = if (pitanja.isNotEmpty()) pitanja.get(0).odgovori.get(
+            pitanja.get(0).tocanOdgovor.toInt() - 1
+        ) else ""
+        ttsCitacEkrana.citaj(textZaCitanje)
+
+        if (!prednjaStrana) {
+            Text(
+                text = if (pitanja.isNotEmpty()) pitanja.get(0).odgovori.get(
+                    pitanja.get(0).tocanOdgovor.toInt() - 1
+                ) else "TEST",
+                fontSize = 32.sp,
+                color = Color(0xff280a82),
+                fontWeight = FontWeight.ExtraBold,
+                lineHeight = 32.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(top = 40.dp, start = 20.dp, end = 20.dp)
+                    .align(Alignment.Center)
+                    .offset(y = -10.dp)
+            )
+        }
+
+        Row(
             modifier = Modifier
-                .padding(top = 40.dp, start = 20.dp, end = 20.dp)
-                .align(Alignment.Center)
-                .offset(y = -10.dp)
-        )
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+        ) {
 
-       Row(
-           modifier = Modifier
-               .align(Alignment.BottomCenter)
-               .fillMaxWidth()
-       ) {
-           TextButton(
-               onClick = { /*TODO*/ },
-               modifier = Modifier
-                   .weight(1f)
-                   .background(color = Color(0xFF09CACA)), shape = RoundedCornerShape(bottomStart = 16.dp)
-           )
-           {
-               Text(
-                   text = "Znao sam",
-                   fontSize = 20.sp,
-                   fontWeight = FontWeight.Bold,
-                   textAlign = TextAlign.End,
-                   color = Color.White,
-                   modifier = Modifier
-                       .align(Alignment.CenterVertically)
-               )
-           }
+            TextButton(
+                onClick = {
+                    controller.flipToFront()
+                    viewModel.znaoSamPitanje(pitanja.first())
+                    viewModel.sljedecePitanje()
+                    viewModel.okreniKarticu()
+                },
+                enabled = !prednjaStrana,
+                modifier = Modifier
+                    .weight(1f)
+                    .background(
+                        color = Color(0xFF09CACA),
+                        shape = RoundedCornerShape(bottomStart = 16.dp)
+                    )
+            )
+            {
+                Text(
+                    text = "Znao sam",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.End,
+                    color = Color.White,
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                )
+            }
 
-           TextButton(
-               onClick = { /*TODO*/ },
-               modifier = Modifier
-                   .weight(1f)
-                   .background(color = Color(0xFFFF6D64)), shape = RoundedCornerShape(bottomEnd = 16.dp)
-           ){
-               Text(
-                   text = "Nisam",
-                   fontSize = 20.sp,
-                   fontWeight = FontWeight.Bold,
-                   textAlign = TextAlign.End,
-                   color = Color.White,
-                   modifier = Modifier
-                       .align(Alignment.CenterVertically)
-               )
-           }
-       }
+            TextButton(
+                onClick = {
+                    controller.flipToFront()
+                    viewModel.nisamZnaoPitanje(pitanja.first())
+                    viewModel.sljedecePitanje()
+                    viewModel.okreniKarticu()
+                },
+                enabled = !prednjaStrana,
+                modifier = Modifier
+                    .weight(1f)
+                    .background(
+                        color = Color(0xFFFF6D64),
+                        shape = RoundedCornerShape(bottomEnd = 16.dp)
+                    )
+            ) {
+                Text(
+                    text = "Nisam znao",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.End,
+                    color = Color.White,
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                )
+            }
+        }
     }
 }
